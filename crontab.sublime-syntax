@@ -1,0 +1,47 @@
+%YAML 1.2
+---
+name: crontab
+file_extensions: [tab, crontab]
+scope: crontab
+
+contexts:
+  prototype:
+    - match: $
+      pop: true
+    - match: "#"
+      push: comments
+
+  main:
+    - match: "^[A-Z]+="
+      push: vars
+
+    - match: "^@"
+      push: atsyntax
+      # taken from "https://github.com/clarkewd/SublimeCrontab" 
+    - match: ^\s*([^\@\#\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+
+      captures:
+        1: keyword
+        2: entity.name
+        3: variable.parameter
+        4: support.constant
+        5: string
+      push: Packages/ShellScript/Bash.sublime-syntax
+      with_prototype:
+        - match: $
+          pop: true 
+
+  vars:
+    - meta_scope: variable.parameter
+
+  comments:
+    - meta_scope: comment.tab
+    - match: $
+      pop: true
+
+  atsyntax:
+    - meta_scope: constant.numeric.tab
+    - match: \s
+      set: Packages/ShellScript/Bash.sublime-syntax
+      with_prototype:
+        - match: $
+          pop: true
