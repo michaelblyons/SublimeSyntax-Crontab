@@ -1,0 +1,11 @@
+# crontab that controls running this proc - these restart every hour in case of transitory issues. 
+# TODO - move to systemd
+
+MAILTO=example@exampledomain.com
+PATH=/usr/bin:/usr/local/bin
+
+@reboot /run/some/script; /another/script/that/is/needed/onstartup
+
+#m     h    dom   mon   dow   command
+59     *     *     *     *    sleep 10; /run/with/spacing && /run/if/spacing
+*/5 * * * * /grab/some/info --dest /usr/scratch -d

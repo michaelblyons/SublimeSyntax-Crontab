@@ -9,7 +9,8 @@ contexts:
     - match: $
       pop: true
     - match: "#"
-      push: comments
+      set: comments
+
 
   main:
     - match: "^[A-Z]+="
@@ -20,23 +21,30 @@ contexts:
       # taken from "https://github.com/clarkewd/SublimeCrontab" 
     - match: ^\s*([^\@\#\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+
       captures:
-        1: keyword
-        2: entity.name
-        3: variable.parameter
-        4: support.constant
-        5: string
+        1: keyword.hour.tab
+        2: entity.name.minute.tab
+        3: variable.parameter.dom.tab
+        4: support.constant.dow.tab
+        5: string.month.tab
       push: Packages/ShellScript/Bash.sublime-syntax
       with_prototype:
         - match: $
           pop: true 
 
   vars:
-    - meta_scope: variable.parameter
+    - meta_scope: variable.parameter.tab
+
+  todo:
+    - meta_scope: invalid.deprecated.todo.tab
+    - match: $
+      pop: true
 
   comments:
     - meta_scope: comment.tab
     - match: $
       pop: true
+    - match: TODO
+      set: todo
 
   atsyntax:
     - meta_scope: constant.numeric.tab
