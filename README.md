@@ -26,3 +26,7 @@ Crontabs are arguably a dying thing with systemd, but crontabs are still a quick
 4. Provide a template file of things to do when creating a crontab file
 5. Highlight the valid `@` syntax uses and not all uses
 
+## Credits/Acknowledgements
+
+1. [clarkewd's original Crontab Highlighting Package](https://github.com/clarkewd/SublimeCrontab) which was inherited from [kevinior](https://github.com/kevinior) and [WheresWardy](https://github.com/WheresWardy)
+
