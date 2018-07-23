@@ -1,5 +1,5 @@
-# crontab that controls running this proc - these restart every hour in case of transitory issues. 
-# TODO - move to systemd
+# crontab that controls running this proc
+# TODO - move running to systemd
 
 MAILTO=example@exampledomain.com
 PATH=/usr/bin:/usr/local/bin
