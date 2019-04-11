@@ -3,7 +3,7 @@ version 0.1
 
 ![Example](CrontabHighlightSample.png)
 
-A package I wrote for ST3 to syntax highlight Crontabs since [the old package available](https://github.com/clarkewd/SublimeCrontab) has not beem updated since 2015 and doesn't work. I have inherited a regex, but intend to remove it's use in a future release as it's quite complicate and doesn't allow TODO 1 easily.
+A package I wrote for ST3 to syntax highlight Crontabs since [the old package available](https://github.com/clarkewd/SublimeCrontab) has not been updated since 2015 and doesn't work. I have inherited a regex, but intend to remove it's use in a future release as it's quite complicate and doesn't allow TODO 1 easily.
 
 Crontabs are arguably a dying thing with systemd, but crontabs are still a quick and dirty way to get things running without too much effort, so some use is nice.
 
