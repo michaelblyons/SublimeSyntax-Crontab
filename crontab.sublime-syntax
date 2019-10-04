@@ -1,55 +1,78 @@
 %YAML 1.2
 ---
-name: crontab
-file_extensions: [tab, crontab]
-scope: crontab
+name: Crontab
+file_extensions:
+  - tab
+  - crontab
+  - cron.d
+scope: source.crontab
 
 contexts:
-  prototype:
-    - match: $
-      pop: true
-    - match: "#"
-      set: comments
-
-
   main:
-    - match: "^[A-Z]+="
-      push: vars
+    - include: comments
+    - include: variables
+    - include: at-syntax
+    - include: cron-syntax
 
-    - match: "^@"
-      push: atsyntax
-      # taken from "https://github.com/clarkewd/SublimeCrontab" 
-    - match: ^\s*([^\@\#\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+([^\s\t]+)\s+
+  pop-nl:
+    - match: \n
+      pop: true
+
+  pop-before-nl:
+    - match: (?=\n)
+      pop: true
+
+  variables:
+    - match: ^([A-Z]+)(=)
       captures:
-        1: keyword.hour.tab
-        2: entity.name.minute.tab
-        3: variable.parameter.dom.tab
-        4: support.constant.dow.tab
-        5: string.month.tab
-      push: Packages/ShellScript/Bash.sublime-syntax
-      with_prototype:
-        - match: $
-          pop: true 
-
-  vars:
-    - meta_scope: variable.parameter.tab
+        1: variable.other.readwrite.crontab
+        2: keyword.operator.assignment.crontab
+      push:
+        - include: comments
+        - match: .*
+          scope: string.unquoted.crontab
+        - include: pop-nl
 
   todo:
-    - meta_scope: invalid.deprecated.todo.tab
-    - match: $
-      pop: true
+    - meta_scope: invalid.deprecated.todo.crontab
+    - include: pop-before-nl
+
+  cron-syntax:
+    # taken from "https://github.com/clarkewd/SublimeCrontab"
+    - match: |-
+        (?x)^\s*
+          ([^\@\#\s\t]+)\s+
+          ([^\s\t]+)\s+
+          ([^\s\t]+)\s+
+          ([^\s\t]+)\s+
+          ([^\s\t]+)[ \t]+
+      captures:
+        1: meta.set.cron.minute.crontab constant.numeric.integer.decimal.crontab
+        2: meta.set.cron.hour.crontab constant.numeric.integer.decimal.crontab
+        3: meta.set.cron.day-of-month.crontab
+        4: meta.set.cron.month.crontab
+        5: meta.set.cron.day-of-week.crontab
+      embed: scope:source.shell
+      escape: $
+
+  at-syntax:
+    - match: ^\s*((@)(?:reboot|yearly|annually|monthly|weekly|daily|midnight|hourly))[ \t]+
+      captures:
+        1: constant.language.crontab
+        2: punctuation.definition.variable.crontab
+      embed: scope:source.shell
+      escape: $
+    - match: ^\s*(@)([\n\s]|$)
+      captures:
+        1: punctuation.definition.variable.crontab
+        2: meta.set.complete-at.crontab
 
   comments:
-    - meta_scope: comment.tab
-    - match: $
-      pop: true
-    - match: TODO
-      set: todo
-
-  atsyntax:
-    - meta_scope: constant.numeric.tab
-    - match: \s
-      set: Packages/ShellScript/Bash.sublime-syntax
-      with_prototype:
-        - match: $
-          pop: true
+    - match: \s*(#)
+      captures:
+        1: punctuation.definition.comment.crontab
+      push:
+        - meta_scope: comment.line.number-sign.crontab
+        - include: pop-before-nl
+        - match: TODO
+          push: todo

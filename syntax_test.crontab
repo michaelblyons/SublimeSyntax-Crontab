@@ -1,0 +1,29 @@
+# SYNTAX TEST "Packages/Crontab/Crontab.sublime-syntax"
+
+# crontab that controls running this proc
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign
+#                                        ^ - comment
+# TODO - move running to systemd
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.todo
+
+MAILTO=example@exampledomain.com
+# ^^^^ variable.other.readwrite
+#     ^ keyword.operator.assignment
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted
+#                               ^ - string
+PATH=/usr/bin:/usr/local/bin
+# ^^ variable.other.readwrite
+#   ^ keyword.operator.assignment
+#    ^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted
+#                           ^ - string
+
+@reboot /run/some/script; /another/script/that/is/needed/onstartup
+# <- constant.language punctuation.definition
+# ^^^^^ constant.language
+#      ^ - source source
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
+#                                                                 ^ - source source
+
+#m     h    dom   mon   dow   command
+59     *     *     *     *    sleep 10; /run/with/spacing && /run/if/spacing
+*/5 * * * * /grab/some/info --dest /usr/scratch -d
