@@ -25,6 +25,8 @@ contexts:
     - include: variables
     - include: at-syntax
     - include: cron-syntax
+    - match: ^\s*\w+
+      scope: invalid.illegal.crontab
 
   pop-nl:
     - match: \n
@@ -62,102 +64,118 @@ contexts:
       scope: punctuation.separator.sequence.crontab
 
   cron-minute:
-    - meta_content_scope: meta.sequence.cron.minute.crontab
+    - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.minute.crontab
     - include: pop-nl
     - match: '{{illegal_numeric_only_cron}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{minute}})(-)({{minute}})\b
       scope: constant.other.range.crontab
-      captures:
-        1: constant.numeric.integer.decimal.crontab
-        3: constant.numeric.integer.decimal.crontab
     - match: \b{{minute}}\b
       scope: constant.numeric.integer.decimal.crontab
-    - match: \s+
+    - match: (?=[ \t])
+      set: cron-hour-is-next
+
+  cron-hour-is-next:
+    - meta_content_scope: meta.string.cron-expression.crontab
+    - include: pop-nl
+    - match: (?=\S)
       set: cron-hour
 
   cron-hour:
-    - meta_content_scope: meta.sequence.cron.hour.crontab
+    - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.hour.crontab
     - include: pop-nl
     - match: '{{illegal_numeric_only_cron}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{hour}})(-)({{hour}})\b
       scope: constant.other.range.crontab
-      captures:
-        1: constant.numeric.integer.decimal.crontab
-        3: constant.numeric.integer.decimal.crontab
     - match: \b{{hour}}\b
       scope: constant.numeric.integer.decimal.crontab
-    - match: \s+
+    - match: (?=[ \t])
+      set: cron-day-of-month-is-next
+
+  cron-day-of-month-is-next:
+    - meta_content_scope: meta.string.cron-expression.crontab
+    - include: pop-nl
+    - match: (?=\S)
       set: cron-day-of-month
 
   cron-day-of-month:
-    - meta_content_scope: meta.sequence.cron.day-of-month.crontab
+    - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.day-of-month.crontab
     - include: pop-nl
     - match: '{{illegal_numeric_only_cron}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{day_of_month}})(-)({{day_of_month}})\b
       scope: constant.other.range.crontab
-      captures:
-        1: constant.numeric.integer.decimal.crontab
-        3: constant.numeric.integer.decimal.crontab
     - match: \b{{day_of_month}}\b
       scope: constant.numeric.integer.decimal.crontab
-    - match: \s+
+    - match: (?=[ \t])
+      set: cron-month-is-next
+
+  cron-month-is-next:
+    - meta_content_scope: meta.string.cron-expression.crontab
+    - include: pop-nl
+    - match: (?=\S)
       set: cron-month
 
   cron-month:
-    - meta_content_scope: meta.sequence.cron.month.crontab
+    - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.month.crontab
     - include: pop-nl
     - match: '{{illegal_alphanumeric_cron}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{month}})(-)({{month}})\b
       scope: constant.other.range.crontab
-      captures:
-        1: constant.numeric.integer.decimal.crontab
-        3: constant.numeric.integer.decimal.crontab
     - match: \b{{month}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: \b{{words_month}}\b
-      scope: keyword.other.month-name.crontab
-    - match: \s+
+      scope: support.constant.month-name.crontab
+    - match: (?=[ \t])
+      set: cron-day-of-week-is-next
+
+  cron-day-of-week-is-next:
+    - meta_content_scope: meta.string.cron-expression.crontab
+    - include: pop-nl
+    - match: (?=\S)
       set: cron-day-of-week
 
   cron-day-of-week:
-    - meta_content_scope: meta.sequence.cron.day-of-week.crontab
+    - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.day-of-week.crontab
     - include: pop-nl
     - match: '{{illegal_alphanumeric_cron}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{day_of_week}})(-)({{day_of_week}})\b
       scope: constant.other.range.crontab
-      captures:
-        1: constant.numeric.integer.decimal.crontab
-        3: constant.numeric.integer.decimal.crontab
     - match: \b{{day_of_week}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: \b{{words_day_of_week}}\b
-      scope: keyword.other.day-of-week-name.crontab
+      scope: support.constant.day-of-week-name.crontab
+    - match: (?=[ \t])
+      set: command-is-next
+
+  command-is-next:
+    - include: pop-nl
     - match: \s+
       embed: scope:source.shell
-      escape: $
-      pop: true
+      escape: (?=\n|$)
 
   at-syntax:
+    # Keyword, then script embed
     - match: ^\s*((@){{keywords}})[ \t]+
       captures:
         1: constant.language.schedule.crontab
         2: punctuation.definition.variable.crontab
       embed: scope:source.shell
       escape: $
+    # Don't unhighlight keywords just because EOL
     - match: ^\s*((@){{keywords}})\b
       captures:
         1: constant.language.schedule.crontab
         2: punctuation.definition.variable.crontab
+    # Set up autocomplete for keywords
     - match: ^\s*(@)(\w*(?:[\n\s]|$))
       captures:
         1: punctuation.definition.variable.crontab

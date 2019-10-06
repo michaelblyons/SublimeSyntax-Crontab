@@ -6,16 +6,22 @@
 # TODO - move running to systemd
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.todo
 
-MAILTO=example@exampledomain.com
+# mail any output to `paul', no matter whose crontab this is
+MAILTO=paul@example.com
 # ^^^^ variable.other.readwrite
 #     ^ keyword.operator.assignment
-#      ^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted
-#                               ^ - string
+#      ^^^^^^^^^^^^^^^^ string.unquoted
+#                      ^ - string
+
+# Edit the path
 PATH=/usr/bin:/usr/local/bin
 # ^^ variable.other.readwrite
 #   ^ keyword.operator.assignment
 #    ^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted
 #                           ^ - string
+
+# use /bin/sh to run commands, overriding the default set by cron
+SHELL=/bin/sh
 
 @reboot /run/some/script; /another/script/that/is/needed/onstartup
 # <- constant.language punctuation.definition
@@ -26,19 +32,48 @@ PATH=/usr/bin:/usr/local/bin
 
 #m     h    dom   mon   dow   command
 59     *     *     *     *    sleep 10; /run/with/spacing && /run/if/spacing
+# <- meta.string.cron-expression
+#^^^^^^^^^^^^^^^^^^^^^^^^^ meta.string.cron-expression
+#                         ^^^^ - meta.string
+#                         ^^^^ - source source
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
+#                                                                           ^ - source source
 */5 * * * * /grab/some/info --dest /usr/scratch -d
-30 4 1,15 * 5 foo
+#^ punctuation.separator.step
+# <- constant.language
+# ^ constant.numeric.integer.decimal
+#   ^ constant.language.any-value
 
-# use /bin/sh to run commands, overriding the default set by cron
-SHELL=/bin/sh
-# mail any output to `paul', no matter whose crontab this is
-MAILTO=paul
-#
+30 4 1,15 * 5 foo
+#     ^ punctuation.separator.sequence
+
 # run five minutes after midnight, every day
 5 0 * * *       $HOME/bin/daily.job >> $HOME/tmp/out 2>&1
+#^^^^^^^^ meta.string.cron-expression
+#        ^^^^^^^ - meta.string
+# <- meta.sequence.cron.minute
+# ^ meta.sequence.cron.hour
+#   ^ meta.sequence.cron.day-of-month
+#     ^ meta.sequence.cron.month
+#       ^ meta.sequence.cron.day-of-week
+
 # run at 2:15pm on the first of every month -- output mailed to paul
 15 14 1 * *     $HOME/bin/monthly
+
 # run at 10 pm on weekdays, annoy Joe
 0 22 * * 1-5    mail -s "It's 10pm" joe%Joe,%%Where are your kids?%
+#        ^^^ constant.other.range
+
 23 0-23/2 * * * echo "run 23 minutes after midn, 2am, 4am ..., everyday"
-5 4 * * sun     echo "run at 5 after 4 every sunday"
+#  ^^^^ constant.other.range
+#      ^ punctuation.separator.step
+#       ^ constant.numeric.integer.decimal
+
+5 4 * * Sun     echo "run at 5 after 4 every sunday"
+#       ^^^ support.constant.day-of-week-name
+
+0 20 * Jan,Jul 1-5   echo "weeknights at 8pm in January and July"
+#      ^^^ support.constant.month-name
+#         ^ punctuation.separator.sequence
+#          ^^^ support.constant.month-name
+#              ^^^ constant.other.range
