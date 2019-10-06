@@ -77,3 +77,65 @@ SHELL=/bin/sh
 #         ^ punctuation.separator.sequence
 #          ^^^ support.constant.month-name
 #              ^^^ constant.other.range
+
+* ,* * * * echo "initial comma"
+# ^ invalid.illegal
+
+* *, * * * echo "hanging comma"
+#  ^ invalid.illegal
+
+* 4/,2 * * * echo "no step number"
+#  ^^ invalid.illegal
+
+* ** * * * echo "only one asterisk allowed"
+# ^^ invalid.illegal
+
+* */2 * * * echo "asterisk can have steps"
+# ^^^ - invalid.illegal
+
+* */* * * * echo "step must be a number"
+#  ^^ invalid.illegal
+
+5 4 * * 
+Sun     echo "always end at newline"
+#^^ invalid.illegal
+
+5 4 * * Su     echo "not finished typing day-name"
+#       ^^ - invalid
+
+60 * * * *  echo "Minute: bigger number than allowed"
+#^ invalid.illegal
+
+* 24 * * *  echo "Hour: bigger number than allowed"
+# ^^ invalid.illegal
+
+* * 32 * *  echo "Day of Month: bigger number than allowed"
+#   ^^ invalid.illegal
+
+* * * 13 *  echo "Month: bigger number than allowed"
+#     ^^ invalid.illegal
+
+* * * 0 *  echo "Month: smaller number than allowed"
+#     ^ invalid.illegal
+
+* * * * 8  echo "Day of Week: bigger number than allowed"
+#       ^ invalid.illegal
+
+59 * * * *  echo "Minute: biggest number allowed"
+#^ constant.numeric
+
+* 23 * * *  echo "Hour: biggest number allowed"
+# ^^ constant.numeric
+
+* * 31 * *  echo "Day of Month: biggest number allowed"
+#   ^^ constant.numeric
+
+* * * 1 *  echo "Month: smallest number allowed"
+#     ^ constant.numeric
+
+* * * 12 *  echo "Month: biggest number allowed"
+#     ^^ constant.numeric
+
+* * * * 7  echo "Day of Week: biggest number allowed"
+#       ^ constant.numeric
+

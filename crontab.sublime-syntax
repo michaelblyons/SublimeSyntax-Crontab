@@ -16,8 +16,7 @@ variables:
   words_month: '(?i:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
   words_day_of_week: '(?i:Sun|Mon|Tue|Wed|Thu|Fri|Sat)'
   keywords: (?:reboot|yearly|annually|monthly|weekly|daily|midnight|hourly)
-  illegal_numeric_only_cron: '[^\s\d/,*-]|\*\*|[/,]{2,}'
-  illegal_alphanumeric_cron: '[^\s\d\w/,*-]|\*\*|[/,]{2,}'
+  cron_illegal_punctuation: (?:\*{2,}|[/,?-]{2,}|,(?=[ \t]))
 
 contexts:
   main:
@@ -67,18 +66,24 @@ contexts:
     - match: ^\s*(?=[*\d/,-]+)
       set: cron-minute
 
+  cron-initial-comma:
+    - match: \,
+      scope: invalid.illegal.crontab
+
   cron-common:
     - match: \*
       scope: constant.language.any-value.crontab
-    - match: /
+    - match: /(?=\d)
       scope: punctuation.separator.step.crontab
     - match: \,
       scope: punctuation.separator.sequence.crontab
+    - match: \bH\b
+      scope: invalid.deprecated.non-standard.crontab
 
   cron-minute:
     - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.minute.crontab
     - include: pop-nl
-    - match: '{{illegal_numeric_only_cron}}'
+    - match: '{{cron_illegal_punctuation}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{minute}})(-)({{minute}})\b
@@ -87,17 +92,20 @@ contexts:
       scope: constant.numeric.integer.decimal.crontab
     - match: (?=[ \t])
       set: cron-hour-is-next
+    - match: \S+
+      scope: invalid.illegal.crontab
 
   cron-hour-is-next:
     - meta_content_scope: meta.string.cron-expression.crontab
     - include: pop-nl
+    - include: cron-initial-comma
     - match: (?=\S)
       set: cron-hour
 
   cron-hour:
     - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.hour.crontab
     - include: pop-nl
-    - match: '{{illegal_numeric_only_cron}}'
+    - match: '{{cron_illegal_punctuation}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{hour}})(-)({{hour}})\b
@@ -106,36 +114,46 @@ contexts:
       scope: constant.numeric.integer.decimal.crontab
     - match: (?=[ \t])
       set: cron-day-of-month-is-next
+    - match: \S+
+      scope: invalid.illegal.crontab
 
   cron-day-of-month-is-next:
     - meta_content_scope: meta.string.cron-expression.crontab
     - include: pop-nl
+    - include: cron-initial-comma
     - match: (?=\S)
       set: cron-day-of-month
 
   cron-day-of-month:
     - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.day-of-month.crontab
     - include: pop-nl
-    - match: '{{illegal_numeric_only_cron}}'
+    - match: '{{cron_illegal_punctuation}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{day_of_month}})(-)({{day_of_month}})\b
       scope: constant.other.range.crontab
-    - match: \b{{day_of_month}}\b
-      scope: constant.numeric.integer.decimal.crontab
+    - match: \b({{day_of_month}})([LW])?\b
+      captures:
+        1: constant.numeric.integer.decimal.crontab
+        2: invalid.deprecated.non-standard.crontab
+    - match: \?
+      scope: invalid.deprecated.non-standard.crontab
     - match: (?=[ \t])
       set: cron-month-is-next
+    - match: \S+
+      scope: invalid.illegal.crontab
 
   cron-month-is-next:
     - meta_content_scope: meta.string.cron-expression.crontab
     - include: pop-nl
+    - include: cron-initial-comma
     - match: (?=\S)
       set: cron-month
 
   cron-month:
     - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.month.crontab
     - include: pop-nl
-    - match: '{{illegal_alphanumeric_cron}}'
+    - match: '{{cron_illegal_punctuation}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{month}})(-)({{month}})\b
@@ -146,9 +164,12 @@ contexts:
       scope: support.constant.month-name.crontab
     - match: (?=[ \t])
       set: cron-day-of-week-is-next
+    - match: '[^a-zA-Z]'
+      scope: invalid.illegal.crontab
 
   cron-day-of-week-is-next:
     - meta_content_scope: meta.string.cron-expression.crontab
+    - include: cron-initial-comma
     - include: pop-nl
     - match: (?=\S)
       set: cron-day-of-week
@@ -156,17 +177,23 @@ contexts:
   cron-day-of-week:
     - meta_content_scope: meta.string.cron-expression.crontab meta.sequence.cron.day-of-week.crontab
     - include: pop-nl
-    - match: '{{illegal_alphanumeric_cron}}'
+    - match: '{{cron_illegal_punctuation}}'
       scope: invalid.illegal.crontab
     - include: cron-common
     - match: \b({{day_of_week}})(-)({{day_of_week}})\b
       scope: constant.other.range.crontab
-    - match: \b{{day_of_week}}\b
-      scope: constant.numeric.integer.decimal.crontab
+    - match: \b({{day_of_week}})(L)?\b
+      captures:
+        1: constant.numeric.integer.decimal.crontab
+        2: invalid.deprecated.non-standard.crontab
     - match: \b{{words_day_of_week}}\b
       scope: support.constant.day-of-week-name.crontab
+    - match: \?|#
+      scope: invalid.deprecated.non-standard.crontab
     - match: (?=[ \t])
       set: command-is-next
+    - match: '[^a-zA-Z]'
+      scope: invalid.illegal.crontab
 
   command-is-next:
     - include: pop-nl
