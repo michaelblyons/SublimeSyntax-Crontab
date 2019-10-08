@@ -1,6 +1,8 @@
 import sublime
 import sublime_plugin
 
+from .cron_descriptor import cron_descriptor
+
 
 class HighlightCronRegions(sublime_plugin.ViewEventListener):
 
@@ -38,3 +40,28 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
 
     def on_load_async(self):
         self.highlight_cron()
+
+    def on_hover(self, point, hover_zone):
+        meta_scope = 'meta.string.cron-expression'
+
+        if ((hover_zone != sublime.HOVER_TEXT or not
+             self.view.match_selector(point, meta_scope))):
+            return
+
+        expression_region = [r for r in self.view.find_by_selector(meta_scope)
+                             if r.contains(point)][0]
+        cron_text = self.view.substr(expression_region)
+
+        try:
+            cron_explanation = cron_descriptor.get_description(cron_text)
+        except Exception as e:
+            cron_explanation = 'Could not parse cron expression'
+
+        html = '''
+            <body id="explain-cron">
+                <div>{}</div>
+            </body>
+        '''.format(cron_explanation)
+
+        self.view.show_popup(html, sublime.HIDE_ON_MOUSE_MOVE_AWAY,
+                             location=point, max_width=512, max_height=60)

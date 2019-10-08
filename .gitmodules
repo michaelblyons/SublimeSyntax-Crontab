@@ -1,0 +1,3 @@
+[submodule "cron_descriptor"]
+	path = cron_descriptor
+	url = https://github.com/Salamek/cron-descriptor.git

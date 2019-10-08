@@ -169,8 +169,8 @@ contexts:
 
   cron-day-of-week-is-next:
     - meta_content_scope: meta.string.cron-expression.crontab
-    - include: cron-initial-comma
     - include: pop-nl
+    - include: cron-initial-comma
     - match: (?=\S)
       set: cron-day-of-week
 
