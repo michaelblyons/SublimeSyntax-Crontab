@@ -1,12 +1,9 @@
 import sublime
 import sublime_plugin
 
-from .cron_descriptor import cron_descriptor
-
-
 class HighlightCronRegions(sublime_plugin.ViewEventListener):
 
-    SYNTAX = 'Crontab.sublime-syntax'
+    SYNTAX = 'crontab.sublime-syntax'
 
     @classmethod
     def is_applicable(cls, settings):
@@ -53,7 +50,10 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
         cron_text = self.view.substr(expression_region)
 
         try:
+            from .cron_descriptor import cron_descriptor
             cron_explanation = cron_descriptor.get_description(cron_text)
+        except (ImportError, ModuleNotFoundError):
+            cron_explanation = "Error with cron-descriptor package"
         except Exception as e:
             cron_explanation = 'Could not parse cron expression'
 

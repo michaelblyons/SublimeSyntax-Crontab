@@ -1,25 +1,25 @@
 # Crontab for Sublime Text 3
 
-version 1.0
+[![GitHub release](https://img.shields.io/github/tag/nayyarv/CrontabSublime.svg)](https://GitHub.com/nayyarv/CrontabSublime/tag/)
+
+A ST3 package for working with Crontabs
 
 ![Example screenshot][screenshot]
 
-A package for ST3 to syntax highlight Crontabs since [the old package][clarkewd-cron] currently available has not been updated since 2015 and doesn't work.
+## Features
 
-Crontabs are arguably a dying thing with systemd, but crontabs are still a quick and dirty way to get things running without too much effort, so some help is nice.
+- Syntax highlighting for crontab files (default `*.tab`, `*.crontab` and `cron.d`)
+- Color-coded underline for `cron` expressions.
+- Completions for `cron` expressions and enums like month names.
+- Hover on a `cron` expression for an explanation.
+- Shell syntax highlighting for cron commands
+- Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
 
 ## Installation
 
-1. Run “Package Control: Install Package” command, find and install the `Crontab` plugin.
-2. Close and reopen the file.
-
-## Features
-
-- Syntax highlighting for `.tab` and `.crontab`, with embedded shell syntax for script contents.
-- Color-coded underline for `cron` expression parts.
-- Completions for `cron` expressions and enums like month names.
-- Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
-- Hover on a `cron` expression for an explanation.
+1. Run “Package Control: Install Package” command
+2. Find and Install the `Crontab` plugin.
+3. Restart Sublime Text.
 
 ## Todos
 
