@@ -35,7 +35,7 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
     def on_modified_async(self):
         self.highlight_cron()
 
-    def on_load_async(self):
+    def on_load(self):
         self.highlight_cron()
 
     def on_hover(self, point, hover_zone):
@@ -50,9 +50,12 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
         cron_text = self.view.substr(expression_region)
 
         try:
+            # lazy load this package since it may not be needed
+            # additionally, in case of issues with it, we still get 
+            # the rest of the functionality
             from .cron_descriptor import cron_descriptor
             cron_explanation = cron_descriptor.get_description(cron_text)
-        except (ImportError, ModuleNotFoundError):
+        except ImportError:
             cron_explanation = "Error with cron-descriptor package"
         except Exception as e:
             cron_explanation = 'Could not parse cron expression'
