@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
 
+
 class HighlightCronRegions(sublime_plugin.ViewEventListener):
 
     SYNTAX = 'crontab.sublime-syntax'
@@ -8,7 +9,8 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
     @classmethod
     def is_applicable(cls, settings):
         try:
-            return settings and cls.SYNTAX in settings.get('syntax', '')
+            return (settings and
+                    settings.get('syntax', '').lower().endswith(cls.SYNTAX))
         except Exception as e:
             return False
 
@@ -51,7 +53,7 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
 
         try:
             # lazy load this package since it may not be needed
-            # additionally, in case of issues with it, we still get 
+            # additionally, in case of issues with it, we still get
             # the rest of the functionality
             from .cron_descriptor import cron_descriptor
             cron_explanation = cron_descriptor.get_description(cron_text)
