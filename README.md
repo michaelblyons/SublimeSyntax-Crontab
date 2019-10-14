@@ -1,8 +1,6 @@
 # Crontab for Sublime Text 3
 
-[![GitHub release](https://img.shields.io/github/tag/nayyarv/CrontabSublime.svg)](https://GitHub.com/nayyarv/CrontabSublime/tag/)
-
-A ST3 package for working with Crontabs
+[![GitHub release](https://img.shields.io/github/tag/nayyarv/CrontabSublime.svg)](https://GitHub.com/nayyarv/CrontabSublime/tag/) [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
 
 ![Example screenshot][screenshot]
 
