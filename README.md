@@ -1,32 +1,39 @@
-# CrontabSublime
-version 0.1
+# Crontab for Sublime Text 3
 
-![Example](CrontabHighlightSample.png)
+[![GitHub release](https://img.shields.io/github/tag/nayyarv/CrontabSublime.svg)](https://GitHub.com/nayyarv/CrontabSublime/tag/) [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
 
-A package I wrote for ST3 to syntax highlight Crontabs since [the old package available](https://github.com/clarkewd/SublimeCrontab) has not been updated since 2015 and doesn't work. I have inherited a regex, but intend to remove it's use in a future release as it's quite complicate and doesn't allow TODO 1 easily.
+![Example screenshot][screenshot]
 
-Crontabs are arguably a dying thing with systemd, but crontabs are still a quick and dirty way to get things running without too much effort, so some use is nice.
+## Features
+
+- Syntax highlighting for crontab files (default `*.tab`, `*.crontab` and `cron.d`)
+- Color-coded underline for `cron` expressions.
+- Completions for `cron` expressions and enums like month names.
+- Hover on a `cron` expression for an explanation.
+- Shell syntax highlighting for cron commands
+- Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
 
 ## Installation
 
-1. Run “Package Control: Install Package” command, find and install `Crontab` plugin.
-2. Close and reopen file
-
-## Notes
-
-- Will highlight packages with `tab` and `crontab` suffices. For custom suffices/filenames, add to your personal sublime text preferences.
-- Uses bash highlighting in your commands.
-- Comment and uncommenting lines using `ctrl/cmd + /` works as expected
+1. Run “Package Control: Install Package” command
+2. Find and Install the `Crontab` plugin.
+3. Restart Sublime Text.
 
 ## Todos
 
-1. Report errors in syntax in the time string
-2. Alert on unescaped usage of `%` in crontab line
-3. Provide an autocomplete like syntax for inserting new command lines
-4. Provide a template file of things to do when creating a crontab file
-5. Highlight the valid `@` syntax uses and not all uses
+1. Alert on unescaped usage of `%` in crontab line.
+2. Provide a template file of things to do when creating a crontab file.
+3. Additional "system" crontab syntax with user/group support.
+4. Options to change or disable rainbow underlines.
 
 ## Credits/Acknowledgements
 
-1. [clarkewd's original Crontab Highlighting Package](https://github.com/clarkewd/SublimeCrontab) which was inherited from [kevinior](https://github.com/kevinior) and [WheresWardy](https://github.com/WheresWardy)
+1. [clarkewd][]'s original [Crontab Highlighting Package][clarkewd-cron] which was inherited from [kevinior][] and [WheresWardy][]
+2. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
 
+[screenshot]: CrontabHighlightSample.png
+[clarkewd]: https://github.com/clarkewd
+[clarkewd-cron]: https://github.com/clarkewd/SublimeCrontab
+[kevinior]: https://github.com/kevinior
+[whereswardy]: https://github.com/WheresWardy
+[cron_descriptor]: https://github.com/Salamek/cron-descriptor

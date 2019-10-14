@@ -1,0 +1,13 @@
+{
+    "scope": "source.crontab meta.completion.at - comment",
+    "completions": [
+        { "trigger": "reboot\t@keyword", "contents": "reboot" },
+        { "trigger": "yearly\t@keyword", "contents": "yearly" },
+        { "trigger": "annually\t@keyword", "contents": "annually" },
+        { "trigger": "monthly\t@keyword", "contents": "monthly" },
+        { "trigger": "weekly\t@keyword", "contents": "weekly" },
+        { "trigger": "daily\t@keyword", "contents": "daily" },
+        { "trigger": "midnight\t@keyword", "contents": "midnight" },
+        { "trigger": "hourly\t@keyword", "contents": "hourly" },
+    ]
+}

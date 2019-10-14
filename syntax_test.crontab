@@ -1,0 +1,141 @@
+# SYNTAX TEST "Packages/Crontab/Crontab.sublime-syntax"
+
+# crontab that controls running this proc
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign
+#                                        ^ - comment
+# TODO - move running to systemd
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.todo
+
+# mail any output to `paul', no matter whose crontab this is
+MAILTO=paul@example.com
+# ^^^^ variable.other.readwrite
+#     ^ keyword.operator.assignment
+#      ^^^^^^^^^^^^^^^^ string.unquoted
+#                      ^ - string
+
+# Edit the path
+PATH=/usr/bin:/usr/local/bin
+# ^^ variable.other.readwrite
+#   ^ keyword.operator.assignment
+#    ^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted
+#                           ^ - string
+
+# use /bin/sh to run commands, overriding the default set by cron
+SHELL=/bin/sh
+
+@reboot /run/some/script; /another/script/that/is/needed/onstartup
+# <- constant.language punctuation.definition
+# ^^^^^ constant.language
+#      ^ - source source
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
+#                                                                 ^ - source source
+
+#m     h    dom   mon   dow   command
+59     *     *     *     *    sleep 10; /run/with/spacing && /run/if/spacing
+# <- meta.string.cron-expression
+#^^^^^^^^^^^^^^^^^^^^^^^^^ meta.string.cron-expression
+#                         ^^^^ - meta.string
+#                         ^^^^ - source source
+#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
+#                                                                           ^ - source source
+*/5 * * * * /grab/some/info --dest /usr/scratch -d
+#^ punctuation.separator.step
+# <- constant.language
+# ^ constant.numeric.integer.decimal
+#   ^ constant.language.any-value
+
+30 4 1,15 * 5 foo
+#     ^ punctuation.separator.sequence
+
+# run five minutes after midnight, every day
+5 0 * * *       $HOME/bin/daily.job >> $HOME/tmp/out 2>&1
+#^^^^^^^^ meta.string.cron-expression
+#        ^^^^^^^ - meta.string
+# <- meta.sequence.cron.minute
+# ^ meta.sequence.cron.hour
+#   ^ meta.sequence.cron.day-of-month
+#     ^ meta.sequence.cron.month
+#       ^ meta.sequence.cron.day-of-week
+
+# run at 2:15pm on the first of every month -- output mailed to paul
+15 14 1 * *     $HOME/bin/monthly
+
+# run at 10 pm on weekdays, annoy Joe
+0 22 * * 1-5    mail -s "It's 10pm" joe%Joe,%%Where are your kids?%
+#        ^^^ constant.other.range
+
+23 0-23/2 * * * echo "run 23 minutes after midn, 2am, 4am ..., everyday"
+#  ^^^^ constant.other.range
+#      ^ punctuation.separator.step
+#       ^ constant.numeric.integer.decimal
+
+5 4 * * Sun     echo "run at 5 after 4 every sunday"
+#       ^^^ support.constant.day-of-week-name
+
+0 20 * Jan,Jul 1-5   echo "weeknights at 8pm in January and July"
+#      ^^^ support.constant.month-name
+#         ^ punctuation.separator.sequence
+#          ^^^ support.constant.month-name
+#              ^^^ constant.other.range
+
+* ,* * * * echo "initial comma"
+# ^ invalid.illegal
+
+* *, * * * echo "hanging comma"
+#  ^ invalid.illegal
+
+* 4/,2 * * * echo "no step number"
+#  ^^ invalid.illegal
+
+* ** * * * echo "only one asterisk allowed"
+# ^^ invalid.illegal
+
+* */2 * * * echo "asterisk can have steps"
+# ^^^ - invalid.illegal
+
+* */* * * * echo "step must be a number"
+#  ^^ invalid.illegal
+
+5 4 * * 
+Sun     echo "always end at newline"
+#^^ invalid.illegal
+
+5 4 * * Su     echo "not finished typing day-name"
+#       ^^ - invalid
+
+60 * * * *  echo "Minute: bigger number than allowed"
+#^ invalid.illegal
+
+* 24 * * *  echo "Hour: bigger number than allowed"
+# ^^ invalid.illegal
+
+* * 32 * *  echo "Day of Month: bigger number than allowed"
+#   ^^ invalid.illegal
+
+* * * 13 *  echo "Month: bigger number than allowed"
+#     ^^ invalid.illegal
+
+* * * 0 *  echo "Month: smaller number than allowed"
+#     ^ invalid.illegal
+
+* * * * 8  echo "Day of Week: bigger number than allowed"
+#       ^ invalid.illegal
+
+59 * * * *  echo "Minute: biggest number allowed"
+#^ constant.numeric
+
+* 23 * * *  echo "Hour: biggest number allowed"
+# ^^ constant.numeric
+
+* * 31 * *  echo "Day of Month: biggest number allowed"
+#   ^^ constant.numeric
+
+* * * 1 *  echo "Month: smallest number allowed"
+#     ^ constant.numeric
+
+* * * 12 *  echo "Month: biggest number allowed"
+#     ^^ constant.numeric
+
+* * * * 7  echo "Day of Week: biggest number allowed"
+#       ^ constant.numeric
+

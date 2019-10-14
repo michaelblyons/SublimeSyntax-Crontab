@@ -1,0 +1,12 @@
+{
+    "scope": "source.crontab meta.sequence.cron.day-of-week - comment",
+    "completions": [
+        { "trigger": "Sun\tDay of week", "contents": "Sun" },
+        { "trigger": "Mon\tDay of week", "contents": "Mon" },
+        { "trigger": "Tue\tDay of week", "contents": "Tue" },
+        { "trigger": "Wed\tDay of week", "contents": "Wed" },
+        { "trigger": "Thu\tDay of week", "contents": "Thu" },
+        { "trigger": "Fri\tDay of week", "contents": "Fri" },
+        { "trigger": "Sat\tDay of week", "contents": "Sat" },
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "scope": "source.crontab meta.sequence.cron.month - comment",
+    "completions": [
+        { "trigger": "Jan\tMonth", "contents": "Jan" },
+        { "trigger": "Feb\tMonth", "contents": "Feb" },
+        { "trigger": "Mar\tMonth", "contents": "Mar" },
+        { "trigger": "Apr\tMonth", "contents": "Apr" },
+        { "trigger": "May\tMonth", "contents": "May" },
+        { "trigger": "Jun\tMonth", "contents": "Jun" },
+        { "trigger": "Jul\tMonth", "contents": "Jul" },
+        { "trigger": "Aug\tMonth", "contents": "Aug" },
+        { "trigger": "Sep\tMonth", "contents": "Sep" },
+        { "trigger": "Oct\tMonth", "contents": "Oct" },
+        { "trigger": "Nov\tMonth", "contents": "Nov" },
+        { "trigger": "Dec\tMonth", "contents": "Dec" },
+    ]
+}

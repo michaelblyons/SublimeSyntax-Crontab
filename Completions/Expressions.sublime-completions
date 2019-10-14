@@ -1,0 +1,23 @@
+{
+    "scope": "source.crontab - meta - comment",
+    "completions": [
+        { "trigger":  "reboot\tcron expression",
+          "contents": "@reboot ${1:echo \"Once each startup\"}"},
+        { "trigger":  "yearly\tcron expression",
+          "contents": "@yearly ${1:echo \"Once a year\"}"},
+        { "trigger":  "annually\tcron expression",
+          "contents": "@annually ${1:echo \"Once a year\"}"},
+        { "trigger":  "monthly\tcron expression",
+          "contents": "@monthly ${1:echo \"Once a month\"}"},
+        { "trigger":  "weekly\tcron expression",
+          "contents": "@weekly ${1:echo \"Once a week\"}"},
+        { "trigger":  "daily\tcron expression",
+          "contents": "@daily ${1:echo \"Once a day at midnight\"}"},
+        { "trigger":  "midnight\tcron expression",
+          "contents": "@midnight ${1:echo \"Once a day at midnight\"}"},
+        { "trigger":  "hourly\tcron expression",
+          "contents": "@hourly ${1:echo \"Once an hour\"}"},
+        { "trigger":  "cron\tcron expression",
+          "contents": "${1:*} ${2:*} ${3:*} ${4:*} ${5:*} ${6:echo \"Run a script\"}"},
+    ]
+}
