@@ -1,6 +1,6 @@
 # Crontab for Sublime Text 3
 
-[![GitHub license](https://img.shields.io/github/license/nayyarv/CrontabSublime.svg)](https://github.com/nayyarv/CrontabSublime/blob/master/LICENSE) [![GitHub release](https://img.shields.io/github/release/nayyarv/CrontabSublime.svg)](https://GitHub.com/nayyarv/CrontabSublime/releases/) [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
+[![GitHub license](https://img.shields.io/github/license/michaelblyons/CrontabSublime.svg)](https://github.com/michaelblyons/CrontabSublime/blob/master/LICENSE) [![GitHub release](https://img.shields.io/github/release/michaelblyons/CrontabSublime.svg)](https://GitHub.com/michaelblyons/CrontabSublime/releases/) [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
 
 ![Example screenshot][screenshot]
 
