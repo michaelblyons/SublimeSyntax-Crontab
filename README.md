@@ -1,6 +1,8 @@
 # Crontab for Sublime Text 3
 
-[![GitHub license](https://img.shields.io/github/license/michaelblyons/CrontabSublime.svg)](https://github.com/michaelblyons/CrontabSublime/blob/master/LICENSE) [![GitHub release](https://img.shields.io/github/release/michaelblyons/CrontabSublime.svg)](https://GitHub.com/michaelblyons/CrontabSublime/releases/) [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
+[![GitHub license](https://img.shields.io/github/license/michaelblyons/SublimeSyntax-Crontab.svg)](https://github.com/michaelblyons/SublimeSyntax-Crontab/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/michaelblyons/SublimeSyntax-Crontab.svg)](https://GitHub.com/michaelblyons/SublimeSyntax-Crontab/releases/)
+[![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
 
 ![Example screenshot][screenshot]
 
@@ -28,12 +30,14 @@
 
 ## Credits/Acknowledgements
 
-1. [clarkewd][]'s original [Crontab Highlighting Package][clarkewd-cron] which was inherited from [kevinior][] and [WheresWardy][]
-2. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
+1. [clarkewd][]'s original [Crontab Highlighting Package][clarkewd-cron] which was inherited from [kevinior][] and [WheresWardy][].
+2. [Varun Nayyar][nayyarv] and his adaptation of the package to `.sublime-syntax`.
+3. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
 
-[screenshot]: CrontabHighlightSample.png
+[screenshot]: screenshot.png
 [clarkewd]: https://github.com/clarkewd
 [clarkewd-cron]: https://github.com/clarkewd/SublimeCrontab
 [kevinior]: https://github.com/kevinior
 [whereswardy]: https://github.com/WheresWardy
+[nayyarv]: https://github.com/nayyarv
 [cron_descriptor]: https://github.com/Salamek/cron-descriptor
