@@ -93,6 +93,8 @@ contexts:
     - include: cron-common
     - match: \b({{minute}})(-)({{minute}})\b
       scope: constant.other.range.crontab
+      captures:
+        2: punctuation.separator.sequence.crontab
     - match: \b{{minute}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: (?=[ \t])
@@ -116,6 +118,8 @@ contexts:
     - include: cron-common
     - match: \b({{hour}})(-)({{hour}})\b
       scope: constant.other.range.crontab
+      captures:
+        2: punctuation.separator.sequence.crontab
     - match: \b{{hour}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: (?=[ \t])
@@ -139,6 +143,8 @@ contexts:
     - include: cron-common
     - match: \b({{day_of_month}})(-)({{day_of_month}})\b
       scope: constant.other.range.crontab
+      captures:
+        2: punctuation.separator.sequence.crontab
     - match: \b({{day_of_month}})([LW])?\b
       captures:
         1: constant.numeric.integer.decimal.crontab
@@ -166,8 +172,16 @@ contexts:
     - include: cron-common
     - match: \b({{month}})(-)({{month}})\b
       scope: constant.other.range.crontab
+      captures:
+        2: punctuation.separator.sequence.crontab
     - match: \b{{month}}\b
       scope: constant.numeric.integer.decimal.crontab
+    - match: \b({{words_month}})(-)({{words_month}})\b
+      scope: constant.other.range.crontab
+      captures:
+        1: support.constant.month-name.crontab
+        2: punctuation.separator.sequence.crontab
+        3: support.constant.month-name.crontab
     - match: \b{{words_month}}\b
       scope: support.constant.month-name.crontab
     - match: (?=[ \t])
@@ -191,10 +205,18 @@ contexts:
     - include: cron-common
     - match: \b({{day_of_week}})(-)({{day_of_week}})\b
       scope: constant.other.range.crontab
+      captures:
+        2: punctuation.separator.sequence.crontab
     - match: \b({{day_of_week}})(L)?\b
       captures:
         1: constant.numeric.integer.decimal.crontab
         2: invalid.deprecated.non-standard.crontab
+    - match: \b({{words_day_of_week}})(-)({{words_day_of_week}})\b
+      scope: constant.other.range.crontab
+      captures:
+        1: support.constant.day-of-week-name.crontab
+        2: punctuation.separator.sequence.crontab
+        3: support.constant.day-of-week-name.crontab
     - match: \b{{words_day_of_week}}\b
       scope: support.constant.day-of-week-name.crontab
     - match: \?|#

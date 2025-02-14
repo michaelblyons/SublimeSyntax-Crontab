@@ -78,6 +78,12 @@ SHELL=/bin/sh
 #          ^^^ support.constant.month-name
 #              ^^^ constant.other.range
 
+0 20 * Jan-Jul,11 1-5   echo "Month range"
+#      ^^^ support.constant.month-name
+#         ^ punctuation.separator.sequence
+#          ^^^ support.constant.month-name
+#             ^ punctuation.separator.sequence
+
 * ,* * * * echo "initial comma"
 # ^ invalid.illegal
 
