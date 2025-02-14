@@ -26,7 +26,7 @@
 - [ ] Alert on unescaped usage of `%` in crontab line.
 - [ ] Provide a template file of things to do when creating a crontab file.
 - [ ] Additional "system" crontab syntax with user/group support.
-- [ ] Options to change or disable rainbow underlines. (#4)
+- [x] Options to change or disable rainbow underlines. (#4)
 - [ ] Continuous integration
 
 ## Credits/Acknowledgements
