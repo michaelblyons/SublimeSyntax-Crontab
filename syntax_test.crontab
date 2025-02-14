@@ -99,6 +99,7 @@ SHELL=/bin/sh
 5 4 * * 
 Sun     echo "always end at newline"
 #^^ invalid.illegal
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ - source source
 
 5 4 * * Su     echo "not finished typing day-name"
 #       ^^ - invalid
