@@ -1,0 +1,13 @@
+{
+    // Mark the cron segments by type
+    "cron_highlight_enabled": false,
+
+    // Customize color scopes
+    "cron_highlight_colors": {
+        "minute": "region.redish",
+        "hour": "region.greenish",
+        "day-of-month": "region.orangish",
+        "month": "region.bluish",
+        "day-of-week": "region.yellowish",
+    },
+}

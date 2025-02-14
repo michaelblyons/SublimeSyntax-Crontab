@@ -28,17 +28,20 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
         )
 
     def highlight_cron(self):
-        self.highlight_cron_part('minute', 'region.redish')
-        self.highlight_cron_part('hour', 'region.greenish')
-        self.highlight_cron_part('day-of-month', 'region.orangish')
-        self.highlight_cron_part('month', 'region.bluish')
-        self.highlight_cron_part('day-of-week', 'region.yellowish')
+        color_map = sublime.load_settings('Crontab.sublime-settings').get(
+            'cron_highlight_colors')
+        for cron_part in color_map:
+            self.highlight_cron_part(cron_part, color_map[cron_part])
 
     def on_modified_async(self):
-        self.highlight_cron()
+        if sublime.load_settings('Crontab.sublime-settings').get(
+                'cron_highlight_enabled'):
+            self.highlight_cron()
 
     def on_load(self):
-        self.highlight_cron()
+        if sublime.load_settings('Crontab.sublime-settings').get(
+                'cron_highlight_enabled'):
+            self.highlight_cron()
 
     def on_hover(self, point, hover_zone):
         meta_scope = 'meta.string.cron-expression'
