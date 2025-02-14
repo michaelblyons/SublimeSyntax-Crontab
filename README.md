@@ -35,7 +35,7 @@
 2. [Varun Nayyar][nayyarv] and his adaptation of the package to `.sublime-syntax`.
 3. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
 
-[screenshot]: screenshot.png
+[screenshot]: demo/screenshot.png
 [clarkewd]: https://github.com/clarkewd
 [clarkewd-cron]: https://github.com/clarkewd/SublimeCrontab
 [kevinior]: https://github.com/kevinior
