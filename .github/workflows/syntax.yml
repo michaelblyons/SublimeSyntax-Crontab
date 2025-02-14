@@ -25,8 +25,11 @@ jobs:
       matrix:
         include:
           - build: 'latest'
+            packages: 'false'
           - build: 'stable'
+            packages: 'false'
           - build: 3156
+            packages: 'false'
     steps:
       - uses: actions/checkout@v4
       - uses: SublimeText/syntax-test-action@v2
