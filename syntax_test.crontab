@@ -4,7 +4,6 @@
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign
 #                                        ^ - comment
 # TODO - move running to systemd
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invalid.deprecated.todo
 
 # mail any output to `paul', no matter whose crontab this is
 MAILTO=paul@example.com

@@ -58,10 +58,6 @@ contexts:
           scope: string.unquoted.crontab
         - include: pop-nl
 
-  todo:
-    - meta_scope: invalid.deprecated.todo.crontab
-    - include: pop-before-nl
-
   cron-syntax:
     - match: ^\s*(?=[*\d/,-]+)
       set: cron-minute
@@ -258,5 +254,3 @@ contexts:
       push:
         - meta_scope: comment.line.number-sign.crontab
         - include: pop-before-nl
-        - match: TODO
-          push: todo
