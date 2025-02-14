@@ -40,9 +40,9 @@ SHELL=/bin/sh
 #                                                                           ^ - source source
 */5 * * * * /grab/some/info --dest /usr/scratch -d
 #^ punctuation.separator.step
-# <- constant.language
+# <- variable.language
 # ^ constant.numeric.integer.decimal
-#   ^ constant.language.any-value
+#   ^ variable.language.wildcard
 
 30 4 1,15 * 5 foo
 #     ^ punctuation.separator.sequence

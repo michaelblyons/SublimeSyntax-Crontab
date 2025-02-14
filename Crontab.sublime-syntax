@@ -76,7 +76,7 @@ contexts:
 
   cron-common:
     - match: \*
-      scope: constant.language.any-value.crontab
+      scope: variable.language.wildcard.crontab
     - match: /(?=\d)
       scope: punctuation.separator.step.crontab
     - match: \,
