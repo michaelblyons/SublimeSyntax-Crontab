@@ -1,6 +1,6 @@
 {
     // Mark the cron segments by type
-    "cron_highlight_enabled": false,
+    "cron_highlight_enabled": true,
 
     // Customize color scopes
     "cron_highlight_colors": {
