@@ -38,7 +38,7 @@ class HighlightCronRegions(sublime_plugin.ViewEventListener):
                 'cron_highlight_enabled'):
             self.highlight_cron()
 
-    def on_load(self):
+    def on_load_async(self):
         if sublime.load_settings('Crontab.sublime-settings').get(
                 'cron_highlight_enabled'):
             self.highlight_cron()
