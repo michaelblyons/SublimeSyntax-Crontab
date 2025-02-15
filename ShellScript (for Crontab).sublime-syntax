@@ -1,0 +1,16 @@
+%YAML 1.2
+---
+name: Shell (for Crontab)
+scope: source.shell.crontab
+version: 2
+hidden: true
+
+extends: Packages/ShellScript/Shell-Unix-Generic.sublime-syntax
+
+contexts:
+  prototype:
+    - meta_prepend: true
+    - match: '\\%'
+      scope: constant.character.escape.crontab
+    - match: '%'
+      scope: constant.character.newline.crontab

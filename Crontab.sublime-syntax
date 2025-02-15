@@ -179,7 +179,7 @@ contexts:
   command-is-next:
     - include: pop-nl
     - match: \s+
-      embed: scope:source.shell
+      embed: scope:source.shell.crontab
       escape: (?=\n|$)
 
   at-syntax:
@@ -188,7 +188,7 @@ contexts:
       captures:
         1: constant.language.schedule.crontab
         2: punctuation.definition.variable.crontab
-      embed: scope:source.shell
+      embed: scope:source.shell.crontab
       escape: $
     # Don't unhighlight keywords just because EOL
     - match: ^\s*((@){{keywords}})\b

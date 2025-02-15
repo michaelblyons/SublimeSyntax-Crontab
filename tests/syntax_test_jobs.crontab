@@ -99,6 +99,23 @@ SHELL=/bin/sh
 # run at 10 pm on weekdays, annoy Joe
 0 22 * * 1-5    mail -s "It's 10pm" joe%Joe,%%Where are your kids?%
 #        ^^^ constant.other.range
+#                                      ^ constant.character.newline
+#                                           ^^ constant.character.newline
+#                                                                 ^ constant.character.newline
+
+# run at 10 pm on weekdays, annoy Joe
+0 22 * * 1-5    mail -s "It's 10pm" "joe%Joe,%%Where are your kids?%"
+#        ^^^ constant.other.range
+#                                       ^ constant.character.newline
+#                                            ^^ constant.character.newline
+#                                                                  ^ constant.character.newline
+
+# run at 10 pm on weekdays, annoy Joe
+0 22 * * 1-5    mail -s "It's 10pm" "joe%Joe,\%Where are your kids?%"
+#        ^^^ constant.other.range
+#                                       ^ constant.character.newline
+#                                            ^^ constant.character.escape
+#                                                                  ^ constant.character.newline
 
 23 0-23/2 * * * echo "run 23 minutes after midn, 2am, 4am ..., everyday"
 #  ^^^^ constant.other.range
