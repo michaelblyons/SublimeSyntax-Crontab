@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/michaelblyons/SublimeSyntax-Crontab.svg)](https://GitHub.com/michaelblyons/SublimeSyntax-Crontab/releases/)
 [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
 
-![Example screenshot][screenshot]
+![Screenshot of highlighting][screenshot]
 
 ## Features
 
