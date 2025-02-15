@@ -1,3 +1,4 @@
 demo/ export-ignore
 tests/ export-ignore
-README.md
+README.md export-ignore
+.git* export-ignore
