@@ -27,7 +27,7 @@
 - [ ] Provide a template file of things to do when creating a crontab file.
 - [ ] Additional "system" crontab syntax with user/group support.
 - [x] Options to change or disable rainbow underlines. (#4)
-- [ ] Continuous integration
+- [x] Continuous integration
 
 ## Credits/Acknowledgements
 
