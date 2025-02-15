@@ -1,13 +1,47 @@
 {
     "scope": "source.crontab meta.completion.at - comment",
     "completions": [
-        { "trigger": "reboot\t@keyword", "contents": "reboot" },
-        { "trigger": "yearly\t@keyword", "contents": "yearly" },
-        { "trigger": "annually\t@keyword", "contents": "annually" },
-        { "trigger": "monthly\t@keyword", "contents": "monthly" },
-        { "trigger": "weekly\t@keyword", "contents": "weekly" },
-        { "trigger": "daily\t@keyword", "contents": "daily" },
-        { "trigger": "midnight\t@keyword", "contents": "midnight" },
-        { "trigger": "hourly\t@keyword", "contents": "hourly" },
+        {
+            "trigger": "reboot\t@keyword",
+            "contents": "reboot",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Each reboot",
+        },
+        {
+            "trigger": "yearly\t@keyword",
+            "contents": "yearly",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Midnight January 1st",
+        },
+        {
+            "trigger": "annually\t@keyword",
+            "contents": "annually",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Midnight January 1st",
+        },
+        {
+            "trigger": "monthly\t@keyword",
+            "contents": "monthly",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Midnight first day of each month",
+        },
+        {
+            "trigger": "daily\t@keyword",
+            "contents": "daily",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Midnight each day",
+        },
+        {
+            "trigger": "midnight\t@keyword",
+            "contents": "midnight",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Midnight each day",
+        },
+        {
+            "trigger": "hourly\t@keyword",
+            "contents": "hourly",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Beginning of each hour",
+        },
     ]
 }

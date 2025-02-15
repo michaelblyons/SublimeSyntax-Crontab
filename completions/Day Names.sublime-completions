@@ -1,12 +1,47 @@
 {
     "scope": "source.crontab meta.sequence.cron.day-of-week - comment",
     "completions": [
-        { "trigger": "Sun\tDay of week", "contents": "Sun" },
-        { "trigger": "Mon\tDay of week", "contents": "Mon" },
-        { "trigger": "Tue\tDay of week", "contents": "Tue" },
-        { "trigger": "Wed\tDay of week", "contents": "Wed" },
-        { "trigger": "Thu\tDay of week", "contents": "Thu" },
-        { "trigger": "Fri\tDay of week", "contents": "Fri" },
-        { "trigger": "Sat\tDay of week", "contents": "Sat" },
+        {
+            "trigger": "Sun\tDay of week",
+            "contents": "Sun",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Sunday (0)",
+        },
+        {
+            "trigger": "Mon\tDay of week",
+            "contents": "Mon",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Monday (1)",
+        },
+        {
+            "trigger": "Tue\tDay of week",
+            "contents": "Tue",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Tuesday (2)",
+        },
+        {
+            "trigger": "Wed\tDay of week",
+            "contents": "Wed",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Wednesday (3)",
+        },
+        {
+            "trigger": "Thu\tDay of week",
+            "contents": "Thu",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Thursday (4)",
+        },
+        {
+            "trigger": "Fri\tDay of week",
+            "contents": "Fri",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Friday (5)",
+        },
+        {
+            "trigger": "Sat\tDay of week",
+            "contents": "Sat",
+            "kind": ["constant", "d", "Day of week"],
+            "details": "Saturday (6)",
+        },
     ]
 }

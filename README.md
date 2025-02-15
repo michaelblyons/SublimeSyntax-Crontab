@@ -27,6 +27,7 @@
 - [ ] Additional "system" crontab syntax with user/group support.
 - [x] Options to change or disable rainbow underlines. (#4)
 - [x] Continuous integration
+- [ ] Autocomplete works after `,` and `-`
 
 ## Credits/Acknowledgements
 
