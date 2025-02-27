@@ -204,23 +204,45 @@ contexts:
 ###[ MISCELLANEOUS ]###########################################################
 
   comments:
-    - match: \s*(#)
-      captures:
-        1: punctuation.definition.comment.crontab
+    - match: ^\s*(?=#)
+      push: comment
+
+  comment:
+    - match: '#'
+      scope: punctuation.definition.comment.crontab
       push:
         - meta_scope: comment.line.number-sign.crontab
-        - include: pop-before-nl
+        - include: pop-nl
+    - include: pop-nl
 
   variables:
-    - match: ^([A-Z]+)(=)
+    - match: ^([a-zA-Z0-9_]+)\s*(=)
       captures:
         1: variable.other.readwrite.crontab
         2: keyword.operator.assignment.crontab
+      push: variable-value
+
+  variable-value:
+    - include: pop-nl
+    - match: '"'
+      scope: punctuation.definition.string.begin.crontab
+      set:
+        - meta_scope: string.quoted.double.crontab
+        - match: '"'
+          scope: punctuation.definition.string.end.crontab
+          pop: true
+    - match: "'"
+      scope: punctuation.definition.string.begin.crontab
+      set:
+        - meta_scope: string.quoted.single.crontab
+        - match: "'"
+          scope: punctuation.definition.string.end.crontab
+          pop: true
+    - match: \S
       push:
-        - include: comments
-        - match: .*
-          scope: string.unquoted.crontab
-        - include: pop-nl
+        - meta_scope: string.unquoted.crontab
+        - match: (?=\s*$)
+          pop: true
 
   illegal-punctuation:
     - match: \*{2,}|[/,?-]{2,}|,(?=[ \t])
@@ -237,11 +259,7 @@ contexts:
 ###[ PROTOTYPE ]###############################################################
 
   pop-nl:
-    - match: \n
-      pop: true
-
-  pop-before-nl:
-    - match: (?=\n)
+    - match: $\n?
       pop: true
 
 ###############################################################################

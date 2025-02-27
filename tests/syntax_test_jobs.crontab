@@ -1,8 +1,7 @@
 # SYNTAX TEST "Packages/Crontab/Crontab.sublime-syntax"
 
 # crontab that controls running this proc
-# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign
-#                                        ^ - comment
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign
 # TODO - move running to systemd
 
 # mail any output to `paul', no matter whose crontab this is
@@ -12,12 +11,50 @@ MAILTO=paul@example.com
 #      ^^^^^^^^^^^^^^^^ string.unquoted
 #                      ^ - string
 
+    # comments with leading whitespace
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.number-sign
+#^^^ - comment
+
+
 # Edit the path
 PATH=/usr/bin:/usr/local/bin
 # ^^ variable.other.readwrite
 #   ^ keyword.operator.assignment
 #    ^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted
 #                           ^ - string
+
+FOO=bar  # comments not allowed
+#^^ variable.other.readwrite.crontab
+#  ^ keyword.operator.assignment.crontab
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.crontab
+FOO=bar trailing ws not included  
+#^^ variable.other.readwrite.crontab
+#  ^ keyword.operator.assignment.crontab
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.crontab
+#                               ^^ - string
+
+FOO = 
+#^^ variable.other.readwrite.crontab
+#   ^ keyword.operator.assignment.crontab
+FOO = baz
+#^^ variable.other.readwrite.crontab
+#   ^ keyword.operator.assignment.crontab
+#     ^^^ string.unquoted.crontab
+#    ^ - string
+FOO = ' baz '  
+#^^ variable.other.readwrite.crontab
+#   ^ keyword.operator.assignment.crontab
+#     ^^^^^^^ string.quoted.single.crontab
+#     ^ punctuation.definition.string.begin.crontab
+#           ^ punctuation.definition.string.end.crontab
+#    ^ - string
+FOO = " baz "  
+#^^ variable.other.readwrite.crontab
+#   ^ keyword.operator.assignment.crontab
+#     ^^^^^^^ string.quoted.double.crontab
+#     ^ punctuation.definition.string.begin.crontab
+#           ^ punctuation.definition.string.end.crontab
+#    ^ - string
 
 # use /bin/sh to run commands, overriding the default set by cron
 SHELL=/bin/sh
