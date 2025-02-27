@@ -181,7 +181,17 @@ contexts:
     - include: pop-nl
     - match: \s+
       embed: scope:source.shell.bash.crontab
-      escape: (?=\n|$)
+      escape: (?=$|(?<!\\)%)
+    - match: (?=%)
+      set: command-stdin
+
+  command-stdin:
+    - meta_content_scope: meta.string.stdin.crontab string.unquoted.crontab
+    - include: pop-nl
+    - match: \\%
+      scope: constant.character.escape.crontab
+    - match: '%'
+      scope: constant.character.newline.crontab
 
   at-syntax:
     # Keyword, then script embed
