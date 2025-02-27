@@ -48,6 +48,7 @@ FOO = ' baz '
 #     ^ punctuation.definition.string.begin.crontab
 #           ^ punctuation.definition.string.end.crontab
 #    ^ - string
+#            ^^ - string
 FOO = " baz "  
 #^^ variable.other.readwrite.crontab
 #   ^ keyword.operator.assignment.crontab
@@ -55,6 +56,7 @@ FOO = " baz "
 #     ^ punctuation.definition.string.begin.crontab
 #           ^ punctuation.definition.string.end.crontab
 #    ^ - string
+#            ^^ - string
 
 # use /bin/sh to run commands, overriding the default set by cron
 SHELL=/bin/sh
