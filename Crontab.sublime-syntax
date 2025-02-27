@@ -212,6 +212,43 @@ contexts:
         1: punctuation.definition.variable.crontab
         2: meta.completion.at.crontab
 
+###[ ENVIRONMENT VARIABLES ]###################################################
+
+  variables:
+    - match: ^([a-zA-Z0-9_]+)\s*(=)
+      captures:
+        1: variable.other.readwrite.crontab
+        2: keyword.operator.assignment.crontab
+      push: variable-value
+
+  variable-value:
+    - include: pop-nl
+    - match: '"'
+      scope: punctuation.definition.string.begin.crontab
+      set: string-body-double
+    - match: "'"
+      scope: punctuation.definition.string.begin.crontab
+      set: string-body-single
+    - match: \S
+      push: string-body-unquoted
+
+  string-body-double:
+    - meta_scope: meta.string.crontab string.quoted.double.crontab
+    - match: '"'
+      scope: punctuation.definition.string.end.crontab
+      pop: 1
+
+  string-body-single:
+    - meta_scope: meta.string.crontab string.quoted.single.crontab
+    - match: "'"
+      scope: punctuation.definition.string.end.crontab
+      pop: 1
+
+  string-body-unquoted:
+    - meta_scope: meta.string.crontab string.unquoted.crontab
+    - match: (?=\s*$)
+      pop: 1
+
 ###[ MISCELLANEOUS ]###########################################################
 
   comments:
@@ -225,35 +262,6 @@ contexts:
         - meta_scope: comment.line.number-sign.crontab
         - include: pop-nl
     - include: pop-nl
-
-  variables:
-    - match: ^([a-zA-Z0-9_]+)\s*(=)
-      captures:
-        1: variable.other.readwrite.crontab
-        2: keyword.operator.assignment.crontab
-      push: variable-value
-
-  variable-value:
-    - include: pop-nl
-    - match: '"'
-      scope: punctuation.definition.string.begin.crontab
-      set:
-        - meta_scope: string.quoted.double.crontab
-        - match: '"'
-          scope: punctuation.definition.string.end.crontab
-          pop: true
-    - match: "'"
-      scope: punctuation.definition.string.begin.crontab
-      set:
-        - meta_scope: string.quoted.single.crontab
-        - match: "'"
-          scope: punctuation.definition.string.end.crontab
-          pop: true
-    - match: \S
-      push:
-        - meta_scope: string.unquoted.crontab
-        - match: (?=\s*$)
-          pop: true
 
   illegal-punctuation:
     - match: \*{2,}|[/,?-]{2,}|,(?=[ \t])
@@ -271,7 +279,7 @@ contexts:
 
   pop-nl:
     - match: $\n?
-      pop: true
+      pop: 1
 
 ###############################################################################
 
