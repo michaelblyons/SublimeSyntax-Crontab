@@ -249,7 +249,7 @@ contexts:
       scope: invalid.illegal.crontab
 
   illegal-non-alpha:
-    - match: (?i:[^a-z]+)
+    - match: (?i:[^a-z\s]+)
       scope: invalid.illegal.crontab
 
   illegal-non-whitespace:

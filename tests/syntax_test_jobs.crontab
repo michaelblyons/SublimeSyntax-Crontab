@@ -154,9 +154,11 @@ Sun     echo "always end at newline"
 
 * * 32 * *  echo "Day of Month: bigger number than allowed"
 #   ^^ invalid.illegal
+#     ^^^^ - invalid
 
 * * * 13 *  echo "Month: bigger number than allowed"
 #     ^^ invalid.illegal
+#       ^^^^ - invalid
 
 * * * 0 *  echo "Month: smaller number than allowed"
 #     ^ invalid.illegal
@@ -181,4 +183,3 @@ Sun     echo "always end at newline"
 
 * * * * 7  echo "Day of Week: biggest number allowed"
 #       ^ constant.numeric
-
