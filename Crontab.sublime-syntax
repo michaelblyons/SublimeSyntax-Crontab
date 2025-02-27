@@ -226,18 +226,18 @@ contexts:
     - include: pop-nl
     - match: '"'
       scope: punctuation.definition.string.begin.crontab
-      push:
+      set:
         - meta_scope: string.quoted.double.crontab
         - match: '"'
           scope: punctuation.definition.string.end.crontab
-          pop: 2
+          pop: true
     - match: "'"
       scope: punctuation.definition.string.begin.crontab
-      push:
+      set:
         - meta_scope: string.quoted.single.crontab
         - match: "'"
           scope: punctuation.definition.string.end.crontab
-          pop: 2
+          pop: true
     - match: \S
       push:
         - meta_scope: string.unquoted.crontab
