@@ -2,6 +2,7 @@
 ---
 name: Crontab
 scope: source.crontab
+version: 2
 
 file_extensions:
   - tab
@@ -179,7 +180,7 @@ contexts:
   command-is-next:
     - include: pop-nl
     - match: \s+
-      embed: scope:source.shell.crontab
+      embed: scope:source.shell.bash.crontab
       escape: (?=\n|$)
 
   at-syntax:
@@ -188,8 +189,8 @@ contexts:
       captures:
         1: constant.language.schedule.crontab
         2: punctuation.definition.variable.crontab
-      embed: scope:source.shell.crontab
-      escape: $
+      embed: scope:source.shell.bash.crontab
+      escape: (?=$)
     # Don't unhighlight keywords just because EOL
     - match: ^\s*((@){{keywords}})\b
       captures:
