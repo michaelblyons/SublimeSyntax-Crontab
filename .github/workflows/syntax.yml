@@ -28,7 +28,7 @@ jobs:
             packages: master
           - build: 'stable'
             packages: v4193  # revert to 'binary' when Bash rewrite drops in stable
-          - build: 4075
+          - build: 4077
             packages: v4193  # Bash rewrite
     steps:
       - uses: actions/checkout@v4
