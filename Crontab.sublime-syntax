@@ -46,10 +46,10 @@ contexts:
     - include: pop-nl
     - include: illegal-punctuation
     - include: cron-common
-    - match: \b({{minute}})(-)({{minute}})\b
+    - match: \b{{minute}}(-){{minute}}\b
       scope: constant.other.range.crontab
       captures:
-        2: punctuation.separator.sequence.crontab
+        1: punctuation.separator.sequence.crontab
     - match: \b{{minute}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: (?=[ \t])
@@ -70,10 +70,10 @@ contexts:
     - include: pop-nl
     - include: illegal-punctuation
     - include: cron-common
-    - match: \b({{hour}})(-)({{hour}})\b
+    - match: \b{{hour}}(-){{hour}}\b
       scope: constant.other.range.crontab
       captures:
-        2: punctuation.separator.sequence.crontab
+        1: punctuation.separator.sequence.crontab
     - match: \b{{hour}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: (?=[ \t])
@@ -94,10 +94,10 @@ contexts:
     - include: pop-nl
     - include: illegal-punctuation
     - include: cron-common
-    - match: \b({{day_of_month}})(-)({{day_of_month}})\b
+    - match: \b{{day_of_month}}(-){{day_of_month}}\b
       scope: constant.other.range.crontab
       captures:
-        2: punctuation.separator.sequence.crontab
+        1: punctuation.separator.sequence.crontab
     - match: \b({{day_of_month}})([LW])?\b
       captures:
         1: constant.numeric.integer.decimal.crontab
@@ -122,10 +122,10 @@ contexts:
     - include: pop-nl
     - include: illegal-punctuation
     - include: cron-common
-    - match: \b({{month}})(-)({{month}})\b
+    - match: \b{{month}}(-){{month}}\b
       scope: constant.other.range.crontab
       captures:
-        2: punctuation.separator.sequence.crontab
+        1: punctuation.separator.sequence.crontab
     - match: \b{{month}}\b
       scope: constant.numeric.integer.decimal.crontab
     - match: \b({{words_month}})(-)({{words_month}})\b
@@ -154,10 +154,10 @@ contexts:
     - include: pop-nl
     - include: illegal-punctuation
     - include: cron-common
-    - match: \b({{day_of_week}})(-)({{day_of_week}})\b
+    - match: \b{{day_of_week}}(-){{day_of_week}}\b
       scope: constant.other.range.crontab
       captures:
-        2: punctuation.separator.sequence.crontab
+        1: punctuation.separator.sequence.crontab
     - match: \b({{day_of_week}})(L)?\b
       captures:
         1: constant.numeric.integer.decimal.crontab
