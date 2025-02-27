@@ -26,7 +26,7 @@ jobs:
         include:
           - build: 'latest'
           - build: 'stable'
-          - build: 3211
+          - build: 4075
     steps:
       - uses: actions/checkout@v4
       - uses: SublimeText/syntax-test-action@v2
