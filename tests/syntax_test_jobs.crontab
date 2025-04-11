@@ -48,6 +48,7 @@ FOO = ' baz '
 #     ^ punctuation.definition.string.begin.crontab
 #           ^ punctuation.definition.string.end.crontab
 #    ^ - string
+#            ^^ - string
 FOO = " baz "  
 #^^ variable.other.readwrite.crontab
 #   ^ keyword.operator.assignment.crontab
@@ -55,6 +56,7 @@ FOO = " baz "
 #     ^ punctuation.definition.string.begin.crontab
 #           ^ punctuation.definition.string.end.crontab
 #    ^ - string
+#            ^^ - string
 
 # use /bin/sh to run commands, overriding the default set by cron
 SHELL=/bin/sh
@@ -99,6 +101,19 @@ SHELL=/bin/sh
 # run at 10 pm on weekdays, annoy Joe
 0 22 * * 1-5    mail -s "It's 10pm" joe%Joe,%%Where are your kids?%
 #        ^^^ constant.other.range
+#                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.crontab - source source
+#                                      ^ constant.character.newline
+#                                           ^^ constant.character.newline
+#                                                                 ^ constant.character.newline
+
+# run at 10 pm on weekdays, annoy Joe
+0 22 * * 1-5    mail -s "It's 10pm" \%joe%Joe,\%Where are your kids?%
+#        ^^^ constant.other.range
+#                                   ^^ constant.character.escape
+#                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.crontab - source source
+#                                        ^ constant.character.newline
+#                                             ^^ constant.character.escape
+#                                                                   ^ constant.character.newline
 
 23 0-23/2 * * * echo "run 23 minutes after midn, 2am, 4am ..., everyday"
 #  ^^^^ constant.other.range
@@ -140,7 +155,6 @@ SHELL=/bin/sh
 
 5 4 * * 
 Sun     echo "always end at newline"
-#^^ invalid.illegal
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ - source source
 
 5 4 * * Su     echo "not finished typing day-name"

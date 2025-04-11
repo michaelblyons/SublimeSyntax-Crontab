@@ -1,0 +1,27 @@
+%YAML 1.2
+---
+name: Bash (for Crontab)
+scope: source.shell.bash.crontab
+version: 2
+hidden: true
+
+extends: Packages/ShellScript/Bash.sublime-syntax
+
+contexts:
+  prototype:
+    - meta_prepend: true
+    - include: crontab-char-escapes
+
+  parameter-expansions:
+    - meta_prepend: true
+    - include: crontab-char-escapes
+
+  string-prototype:
+    - meta_prepend: true
+    - include: crontab-char-escapes
+
+  crontab-char-escapes:
+    - match: '\\%'
+      scope: constant.character.escape.crontab
+    - match: '%'
+      scope: constant.character.newline.crontab

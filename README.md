@@ -1,4 +1,4 @@
-# Crontab for Sublime Text 3
+# Crontab for Sublime Text
 
 [![GitHub license](https://img.shields.io/github/license/michaelblyons/SublimeSyntax-Crontab.svg)](https://github.com/michaelblyons/SublimeSyntax-Crontab/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/michaelblyons/SublimeSyntax-Crontab.svg)](https://GitHub.com/michaelblyons/SublimeSyntax-Crontab/releases/)
@@ -12,7 +12,7 @@
 - Color-coded underline for `cron` expressions.
 - Completions for `cron` expressions and enums like month names.
 - Hover on a `cron` expression for an explanation.
-- Shell syntax highlighting for cron commands
+- Shell syntax highlighting for `cron` commands
 - Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
 
 ## Installation
@@ -23,11 +23,11 @@
 
 ## Todos
 
-- [ ] Alert on unescaped usage of `%` in crontab line.
 - [ ] Provide a template file of things to do when creating a crontab file.
 - [ ] Additional "system" crontab syntax with user/group support.
 - [x] Options to change or disable rainbow underlines. (#4)
 - [x] Continuous integration
+- [ ] Autocomplete works after `,` and `-`
 
 ## Credits/Acknowledgements
 
