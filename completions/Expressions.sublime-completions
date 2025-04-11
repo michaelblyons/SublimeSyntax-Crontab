@@ -58,6 +58,20 @@
             "details": "Beginning of each hour",
         },
         {
+            "trigger":  "every_minute",
+            "contents": "@every_minute ${1:echo \"Every minute\"}",
+            "annotation": "cron expression",
+            "kind": "snippet",
+            "details": "Every minute",
+        },
+        {
+            "trigger":  "every_second",
+            "contents": "@every_second ${1:echo \"Every second\"}",
+            "annotation": "cron expression",
+            "kind": "snippet",
+            "details": "Every second",
+        },
+        {
             "trigger":  "cron",
             "contents": "${1:*} ${2:*} ${3:*} ${4:*} ${5:*} ${6:echo \"Run a script\"}",
             "annotation": "cron expression",

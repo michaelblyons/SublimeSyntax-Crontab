@@ -57,5 +57,19 @@
             "kind": ["keyword", "@", "Run at"],
             "details": "Beginning of each hour",
         },
+        {
+            "trigger": "every_minute",
+            "contents": "every_minute",
+            "annotation": "@keyword",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Every minute",
+        },
+        {
+            "trigger": "every_second",
+            "contents": "every_second",
+            "annotation": "@keyword",
+            "kind": ["keyword", "@", "Run at"],
+            "details": "Every second",
+        },
     ]
 }

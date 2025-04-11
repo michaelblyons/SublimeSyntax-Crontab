@@ -6,7 +6,7 @@
             "contents": "Sun",
             "annotation": "Day of week",
             "kind": ["variable", "d", "Day of week"],
-            "details": "Sunday (0)",
+            "details": "Sunday (0 or 7)",
         },
         {
             "trigger": "Mon",
