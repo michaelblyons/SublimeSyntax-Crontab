@@ -10,4 +10,13 @@
         "month": "region.bluish",
         "day-of-week": "region.yellowish",
     },
+
+    // Activate auto-complete for @-expressions
+    "auto_complete_triggers":
+    [
+        {
+            "characters": "@",
+            "selector": "source.crontab",
+        },
+    ],
 }
