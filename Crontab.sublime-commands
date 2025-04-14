@@ -7,4 +7,12 @@
             "default": "{\n\t$0\n}\n",
         }
     },
+    {
+        "caption": "Crontab: Edit my crontab file",
+        "command": "exec",
+        "args": {
+            "env": {"VISUAL": "subl -w"},
+            "cmd": ["crontab", "-e"],
+        },
+    }
 ]

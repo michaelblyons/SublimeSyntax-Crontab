@@ -1,7 +1,7 @@
 # Crontab for Sublime Text 3
 
 [![GitHub license](https://img.shields.io/github/license/michaelblyons/SublimeSyntax-Crontab.svg)](https://github.com/michaelblyons/SublimeSyntax-Crontab/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/michaelblyons/SublimeSyntax-Crontab.svg)](https://GitHub.com/michaelblyons/SublimeSyntax-Crontab/releases/)
+[![GitHub release](https://img.shields.io/github/release/michaelblyons/SublimeSyntax-Crontab.svg)](https://github.com/michaelblyons/SublimeSyntax-Crontab/releases/)
 [![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
 
 ![Screenshot of highlighting][screenshot]
@@ -10,10 +10,12 @@
 
 - Syntax highlighting for crontab files (default `*.tab`, `*.crontab` and `cron.d`)
 - Color-coded underline for `cron` expressions.
+- "Edit my crontab" command palette entry.
 - Completions for `cron` expressions and enums like month names.
 - Hover on a `cron` expression for an explanation.
 - Shell syntax highlighting for cron commands
 - Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
+- "Build" system to lint with `crontab -T` (if supported on your machine).
 
 ## Installation
 
