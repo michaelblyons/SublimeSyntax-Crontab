@@ -129,13 +129,13 @@ contexts:
     - match: \b{{month}}\b
       scope: constant.numeric.integer.decimal.crontab
     - include: illegal-numbers
-    - match: \b({{words_month}})(-)({{words_month}})\b
+    - match: ({{words_month}})(-)({{words_month}})
       scope: constant.other.range.crontab
       captures:
         1: support.constant.month-name.crontab
         2: punctuation.separator.sequence.crontab
         3: support.constant.month-name.crontab
-    - match: \b{{words_month}}\b
+    - match: '{{words_month}}'
       scope: support.constant.month-name.crontab
     - match: (?=[ \t])
       set: cron-day-of-week-is-next
@@ -158,18 +158,18 @@ contexts:
       scope: constant.other.range.crontab
       captures:
         1: punctuation.separator.sequence.crontab
-    - match: \b({{day_of_week}})(L)?\b
+    - match: ({{day_of_week}})(L)?\b
       captures:
         1: constant.numeric.integer.decimal.crontab
         2: invalid.deprecated.non-standard.crontab
     - include: illegal-numbers
-    - match: \b({{words_day_of_week}})(-)({{words_day_of_week}})\b
+    - match: ({{words_day_of_week}})(-)({{words_day_of_week}})
       scope: constant.other.range.crontab
       captures:
         1: support.constant.day-of-week-name.crontab
         2: punctuation.separator.sequence.crontab
         3: support.constant.day-of-week-name.crontab
-    - match: \b{{words_day_of_week}}\b
+    - match: '{{words_day_of_week}}'
       scope: support.constant.day-of-week-name.crontab
     - match: \?|#
       scope: invalid.deprecated.non-standard.crontab
@@ -193,18 +193,18 @@ contexts:
       scope: constant.character.newline.crontab
 
   at-syntax:
+    # Every X seconds
+    - match: ^\s*(@)(\d+)(?=[ \t])
+      captures:
+        1: punctuation.definition.variable.crontab
+        2: meta.number.integer.decimal.crontab constant.numeric.value.crontab
+      set: command-is-next
     # Keyword, then script embed
-    - match: ^\s*((@){{keywords}})[ \t]+
+    - match: ^\s*((@){{keywords}})(?=[ \t])
       captures:
         1: constant.language.schedule.crontab
         2: punctuation.definition.variable.crontab
-      embed: scope:source.shell.bash.crontab
-      escape: (?=$)
-    # Don't unhighlight keywords just because EOL
-    - match: ^\s*((@){{keywords}})\b
-      captures:
-        1: constant.language.schedule.crontab
-        2: punctuation.definition.variable.crontab
+      set: command-is-next
     # Set up autocomplete for keywords
     - match: ^\s*(@)(\w*(?:[\n\s]|$))
       captures:
@@ -288,18 +288,11 @@ variables:
   day_of_month: (?:[1-9]|[1-2]\d|3[01]) # 1-31
   month:        (?:[1-9]|1[0-2])        # 1-12
   day_of_week:  (?:[0-7])               # 0-7
-  words_month:  (?i:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)
-  words_day_of_week: (?i:Sun|Mon|Tue|Wed|Thu|Fri|Sat)
-  keywords: (?:reboot|yearly|annually|monthly|weekly|daily|midnight|hourly)
-  snippet_typing:  |-
-    (?x:
-      c(?:r(?:o(?:n)?)?)?
-    | r(?:e(?:b(?:o(?:o(?:t)?)?)?)?)?
-    | y(?:e(?:a(?:r(?:l(?:y)?)?)?)?)?
-    | a(?:n(?:n(?:u(?:a(?:l(?:l(?:y)?)?)?)?)?)?)?
-    | m(?:o(?:n(?:t(?:h(?:l(?:y)?)?)?)?)?)?
-    | w(?:e(?:e(?:k(?:l(?:y)?)?)?)?)?
-    | d(?:a(?:i(?:l(?:y)?)?)?)?
-    | m(?:i(?:d(?:n(?:i(?:g(?:h(?:t)?)?)?)?)?)?)?
-    | h(?:o(?:u(?:r(?:l(?:y)?)?)?)?)?
-    )
+  words_month:  \b(?i:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b
+  words_day_of_week: \b(?i:Sun|Mon|Tue|Wed|Thu|Fri|Sat)\b
+  keywords: |-
+    \b(?x:
+      reboot | yearly | annually | monthly | weekly | daily | hourly
+    # BSD extras
+    | midnight | every_minute | every_second
+    )\b

@@ -68,6 +68,11 @@ SHELL=/bin/sh
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
 #                                                                 ^ - source source
 
+@300 echo run this repeatedly, every 300 seconds after execution finishes
+#^^^ meta.number.integer.decimal.crontab constant.numeric.value.crontab
+#    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
+#    ^^^^ meta.function-call.identifier.shell support.function.shell
+
 #m     h    dom   mon   dow   command
 59     *     *     *     *    sleep 10; /run/with/spacing && /run/if/spacing
 # <- meta.string.cron-expression
