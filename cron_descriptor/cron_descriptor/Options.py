@@ -32,13 +32,12 @@ class Options(object):
     """
 
     def __init__(self):
-        self.throw_exception_on_parse_error = True
         self.casing_type = CasingTypeEnum.Sentence
         self.verbose = False
         self.day_of_week_start_index_zero = True
         self.use_24hour_time_format = False
+        self.locale_location = None
 
         code, encoding = locale.getlocale()
         self.locale_code = code
-        self.use_24hour_time_format = code in [
-            "ru_RU", "uk_UA", "de_DE", "it_IT", "tr_TR", "cs_CZ"]
+        self.use_24hour_time_format = code in ["ru_RU", "uk_UA", "de_DE", "it_IT", "tr_TR", "cs_CZ", "ta_IN"]

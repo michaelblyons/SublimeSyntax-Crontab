@@ -21,18 +21,15 @@
 # SOFTWARE.
 
 import setuptools
-import sys
 
 
 if __name__ == "__main__":
-    if sys.version_info >= (3, 0):
-        long_description = open('README.md', encoding='utf-8').read()
-    else:
-        long_description = open('README.md').read()
-    
+    with open('README.md', encoding='utf-8') as in_file:
+        long_description = in_file.read()
+
     setuptools.setup(
         name="cron_descriptor",
-        version="1.2.24",
+        version="1.4.5",
         description="A Python library that converts cron expressions "
                     "into human readable strings.",
         author="Adam Schubert",
@@ -40,7 +37,7 @@ if __name__ == "__main__":
         url="https://github.com/Salamek/cron-descriptor",
         long_description=long_description,
         long_description_content_type='text/markdown',
-        packages=setuptools.find_packages(exclude=['tests*',]),
+        packages=setuptools.find_packages(exclude=['tests*', ]),
         package_data={
             'cron_descriptor': [
                 'locale/*.mo',
@@ -49,27 +46,25 @@ if __name__ == "__main__":
         classifiers=[
             "Development Status :: 5 - Production/Stable",
             "Environment :: Web Environment",
+            "Environment :: Console",
             "Intended Audience :: Developers",
             "License :: OSI Approved :: MIT License",
             "Operating System :: OS Independent",
             "Programming Language :: Python",
-            "Programming Language :: Python :: 2",
-            "Programming Language :: Python :: 2.5",
-            "Programming Language :: Python :: 2.6",
-            "Programming Language :: Python :: 2.7",
-            "Programming Language :: Python :: 3",
-            "Programming Language :: Python :: 3.2",
-            "Programming Language :: Python :: 3.3",
-            "Programming Language :: Python :: 3.4",
-            "Programming Language :: Python :: 3.5",
-            "Programming Language :: Python :: 3.6",
-            "Programming Language :: Python :: 3.7",
+            "Programming Language :: Python :: 3.8",
+            "Programming Language :: Python :: 3.9",
+            "Programming Language :: Python :: 3.10",
+            "Programming Language :: Python :: 3.11",
+            "Programming Language :: Python :: 3.12",
             "Topic :: Software Development",
         ],
+        extras_require={
+            'dev': [
+                'polib',
+            ]
+        },
         tests_require=[
-            'pep8',
-            'flake8',
-            'pep8-naming'
+            'ruff',
         ],
         test_suite="tests"
     )
