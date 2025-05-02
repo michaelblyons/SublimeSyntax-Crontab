@@ -1,6 +1,6 @@
 # Cron Descriptor
 
-Master: [![Master Build Status](https://api.travis-ci.org/Salamek/cron-descriptor.svg?branch=master)](https://travis-ci.org/Salamek/cron-descriptor) All: [![Build Status](https://api.travis-ci.org/Salamek/cron-descriptor.svg)](https://travis-ci.org/Salamek/cron-descriptor)
+[![Python tests](https://github.com/Salamek/cron-descriptor/actions/workflows/python-test.yml/badge.svg)](https://github.com/Salamek/cron-descriptor/actions/workflows/python-test.yml)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/salamek)
 
 A Python library that converts cron expressions into human readable strings. Ported to Python from https://github.com/bradyholt/cron-expression-descriptor.
@@ -13,8 +13,8 @@ A Python library that converts cron expressions into human readable strings. Por
  * Supports all cron expression special characters including * / , - ? L W, #
  * Supports 5, 6 (w/ seconds or year), or 7 (w/ seconds and year) part cron expressions
  * Provides casing options (Sentence, Title, Lower, etc.)
- * Localization with support for 14 languages
- * Supports Python 2.7 - 3.7
+ * Localization with support for 17 languages
+ * Supports Python 3.8 - 3.12
 
 ## Installation
 Using PIP
@@ -24,8 +24,8 @@ pip install cron-descriptor
 
 ## Usage example
 
+### Simple
 ```python
-# Simple
 from cron_descriptor import get_description, ExpressionDescriptor
 
 print(get_description("* 2 3 * *"))
@@ -35,30 +35,33 @@ print(get_description("* 2 3 * *"))
 print(str(ExpressionDescriptor("* 2 3 * *")))
 ```
 
+### Advanced
 ```python
-# Advanced
 # Consult Options.py/CasingTypeEnum.py/DescriptionTypeEnum.py for more info
 from cron_descriptor import Options, CasingTypeEnum, DescriptionTypeEnum, ExpressionDescriptor
 
-descripter = ExpressionDescriptor("*/10 * * * *", throw_exception_on_parse_error = True, casing_type = CasingTypeEnum.Sentence, use_24hour_time_format = True)
-# GetDescription uses DescriptionTypeEnum.FULL by default:
-print(descripter.get_description())
-print("{}".format(descripter))
+descriptor = ExpressionDescriptor(
+    expression = "*/10 * * * *",
+    casing_type = CasingTypeEnum.Sentence,
+    use_24hour_time_format = True
+)
 
-#or passing Options class as second argument:
+# GetDescription uses DescriptionTypeEnum.FULL by default:
+print(descriptor.get_description())
+print("{}".format(descriptor))
+
+# Or passing Options class as second argument:
 
 options = Options()
-options.throw_exception_on_parse_error = True
 options.casing_type = CasingTypeEnum.Sentence
 options.use_24hour_time_format = True
-descripter = ExpressionDescriptor("*/10 * * * *", options)
-print(descripter.get_description(DescriptionTypeEnum.FULL))
-
+descriptor = ExpressionDescriptor("*/10 * * * *", options)
+print(descriptor.get_description(DescriptionTypeEnum.FULL))
 ```
 
 ## Languages Available
 
-|Language| locale_code | contributor |
+|Language| Locale Code | Contributor |
 |--------|-------------|-------------|
 |English |en|[Brady Holt](https://github.com/bradyholt)|
 |Brazilian |pt_PT|[Renato Lima](https://github.com/natenho)|
@@ -74,6 +77,10 @@ print(descripter.get_description(DescriptionTypeEnum.FULL))
 |Italian |it_IT|[rinaldihno](https://github.com/rinaldihno)|
 |Czech |cs_CZ|[Adam Schubert](https://github.com/salamek)|
 |Swedish |sv_SE|[Åke Engelbrektson](https://github.com/eson57)|
+|Tamil |ta_IN|[Sankar Hari](https://github.com/sankarhari)|
+|Persian|fa_IR|[M. Yas. Davoodeh](https://github.com/Davoodeh)|
+|Korean|ko_KR|[KyuJoo Han](https://github.com/hanqyu)|
+|Japanese |ja_JP|[Tho Nguyen](https://github.com/tho-asterist)|
 
 <!-- SOON
 ## Demo
@@ -88,8 +95,9 @@ print(descripter.get_description(DescriptionTypeEnum.FULL))
  - .NET - [https://github.com/bradyholt/cron-expression-descriptor](https://github.com/bradyholt/cron-expression-descriptor)
 
 ## Ports
- - Java - [https://github.com/RedHogs/cron-parser](https://github.com/RedHogs/cron-parser)
- - Ruby - [https://github.com/alpinweis/cronex](https://github.com/alpinweis/cronex)
+ - Java     - [https://github.com/RedHogs/cron-parser](https://github.com/RedHogs/cron-parser)
+ - Ruby     - [https://github.com/alpinweis/cronex](https://github.com/alpinweis/cronex)
+ - Golang   - [https://github.com/jsuar/go-cron-descriptor](https://github.com/jsuar/go-cron-descriptor)
 
 ## Running Unit Tests
 
@@ -120,7 +128,7 @@ msgfmt -o cron_descriptor/locale/YOUR_LOCALE_CODE.mo cron_descriptor/locale/YOUR
 
 ## Developing
 
-All suggescions and PR's are welcomed
+All suggestions and PR's are welcomed
 
 Just clone this repository and register pre-commit hook by running:
 
@@ -131,7 +139,5 @@ ln -s ../../pre-commit.sh .git/hooks/pre-commit
 Then install dev requirements:
 
 ```bash
-pip install pep8
-pip install flake8
-pip install pep8-naming
+pip install ruff
 ```
