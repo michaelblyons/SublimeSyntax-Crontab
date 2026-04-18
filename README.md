@@ -1,37 +1,30 @@
 # Crontab for Sublime Text
 
-[![GitHub license](https://img.shields.io/github/license/michaelblyons/SublimeSyntax-Crontab.svg)](https://github.com/michaelblyons/SublimeSyntax-Crontab/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/michaelblyons/SublimeSyntax-Crontab.svg)](https://github.com/michaelblyons/SublimeSyntax-Crontab/releases/)
-[![Package Control](https://packagecontrol.herokuapp.com/downloads/Crontab.svg?style=flat-square)](https://packagecontrol.io/packages/Crontab)
-
-![Screenshot of highlighting][screenshot]
+![Screenshot of crontab file with syntax highlighting][screenshot]
 
 ## Features
 
-- Syntax highlighting for crontab files (default `*.tab`, `*.crontab` and `cron.d`)
-- Color-coded underline for `cron` expressions.
-- "Edit my crontab" command palette entry.
+- Syntax highlighting for crontab files.
+    - Shell syntax highlighting for `cron` commands.
+    - Separate syntax highlighter for "system" crontab files.
+- Command Palette entry to load your crontab for editing.
+- Configurable color-coded underline for `cron` expression parts.
 - Completions for `cron` expressions and enums like month names.
 - Hover on a `cron` expression for an explanation.
-- Shell syntax highlighting for `cron` commands
 - Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
 - "Build" system to lint with `crontab -T` (if supported on your machine).
 
 ## Installation
 
-1. Run “Package Control: Install Package” command
-2. Find and Install the `Crontab` plugin.
+1. Run the “Package Control: Install Package” command.
+2. Find and install the **Crontab** plugin.
 3. Restart Sublime Text.
 
 ## Todos
 
-- [ ] Provide a template file of things to do when creating a crontab file.
-- [x] Additional "system" crontab syntax with user/group support.
-- [x] Options to change or disable rainbow underlines. (#4)
-- [x] Continuous integration
-- [ ] Autocomplete works after `,` and `-`
+- [ ] Make autocomplete work after `,` and `-`.
 
-## Credits/Acknowledgements
+## Credits &amp; Acknowledgements
 
 1. [clarkewd][]'s original [Crontab Highlighting Package][clarkewd-cron] which was inherited from [kevinior][] and [WheresWardy][].
 2. [Varun Nayyar][nayyarv] and his adaptation of the package to `.sublime-syntax`.
