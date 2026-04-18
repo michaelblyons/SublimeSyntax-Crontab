@@ -13,27 +13,19 @@ MAILTO=root
 
 * * * * * root touch /tmp/file
 #^^^^^^^^ meta.string.cron-expression.crontab
-# ^ meta.sequence.cron.hour.crontab variable.language.wildcard.crontab
-#   ^ meta.sequence.cron.day-of-month.crontab variable.language.wildcard.crontab
-#     ^ meta.sequence.cron.month.crontab variable.language.wildcard.crontab
-#       ^ meta.sequence.cron.day-of-week.crontab variable.language.wildcard.crontab
+# ^ meta.sequence.cron.hour.crontab constant.other.wildcard.asterisk.crontab
+#   ^ meta.sequence.cron.day-of-month.crontab constant.other.wildcard.asterisk.crontab
+#     ^ meta.sequence.cron.month.crontab constant.other.wildcard.asterisk.crontab
+#       ^ meta.sequence.cron.day-of-week.crontab constant.other.wildcard.asterisk.crontab
 #         ^^^^ constant.language.crontab
-#              ^^^^^^^^^^^^^^^ source.shell.bash.crontab
-#              ^^^^^ meta.function-call.identifier.shell meta.command.shell variable.function.shell
-#                   ^^^^^^^^^^ meta.function-call.arguments.shell
-#                    ^^^^^^^^^ meta.string.glob.shell string.unquoted.shell
+#              ^^^^^^^^^^^^^^^ source source
 
 # m h dom mon dow user      command
 *   *  *   *   *  someuser  echo 'foo'
 #^^^^^^^^^^^^^^^ meta.string.cron-expression.crontab
-#   ^ meta.sequence.cron.hour.crontab variable.language.wildcard.crontab
-#      ^ meta.sequence.cron.day-of-month.crontab variable.language.wildcard.crontab
-#          ^ meta.sequence.cron.month.crontab variable.language.wildcard.crontab
-#              ^ meta.sequence.cron.day-of-week.crontab variable.language.wildcard.crontab
+#   ^ meta.sequence.cron.hour.crontab constant.other.wildcard.asterisk.crontab
+#      ^ meta.sequence.cron.day-of-month.crontab constant.other.wildcard.asterisk.crontab
+#          ^ meta.sequence.cron.month.crontab constant.other.wildcard.asterisk.crontab
+#              ^ meta.sequence.cron.day-of-week.crontab constant.other.wildcard.asterisk.crontab
 #                 ^^^^^^^^ entity.name.user.crontab
-#                           ^^^^^^^^^^ source.shell.bash.crontab
-#                           ^^^^ meta.function-call.identifier.shell support.function.shell
-#                               ^^^^^^ meta.function-call.arguments.shell
-#                                ^^^^^ meta.string.glob.shell string.quoted.single.shell
-#                                ^ punctuation.definition.string.begin.shell
-#                                    ^ punctuation.definition.string.end.shell
+#                           ^^^^^^^^^^ source source

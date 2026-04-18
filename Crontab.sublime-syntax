@@ -25,7 +25,7 @@ contexts:
 
   cron-common:
     - match: \*
-      scope: variable.language.wildcard.crontab
+      scope: constant.other.wildcard.asterisk.crontab
     - match: /(?=\d)
       scope: punctuation.separator.step.crontab
     - match: \,

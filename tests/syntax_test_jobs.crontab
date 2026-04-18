@@ -82,10 +82,16 @@ SHELL=/bin/sh
 #                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
 #                                                                           ^ - source source
 */5 * * * * /grab/some/info --dest /usr/scratch -d
-#^ punctuation.separator.step
-# <- variable.language
-# ^ constant.numeric.integer.decimal
-#   ^ variable.language.wildcard
+#^^^^^^^^^^ meta.string.cron-expression.crontab
+#^^ meta.sequence.cron.minute.crontab
+#^ punctuation.separator.step.crontab
+# ^ constant.numeric.integer.decimal.crontab
+#   ^ meta.sequence.cron.hour.crontab constant.other.wildcard.asterisk.crontab
+#     ^ meta.sequence.cron.day-of-month.crontab constant.other.wildcard.asterisk.crontab
+#       ^ meta.sequence.cron.month.crontab constant.other.wildcard.asterisk.crontab
+#         ^ meta.sequence.cron.day-of-week.crontab constant.other.wildcard.asterisk.crontab
+#           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source source
+#                                                 ^ - source source
 
 30 4 1,15 * 5 foo
 #     ^ punctuation.separator.sequence
