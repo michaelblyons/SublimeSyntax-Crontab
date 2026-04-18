@@ -3,4 +3,4 @@ tests/ export-ignore
 README.md export-ignore
 .git* export-ignore
 
-cron_descriptor linguist-vendored
+cron_descriptor/** linguist-vendored
