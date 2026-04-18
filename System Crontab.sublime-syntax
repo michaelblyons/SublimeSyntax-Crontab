@@ -1,0 +1,24 @@
+%YAML 1.2
+---
+name: System Crontab (root)
+scope: source.crontab.system
+version: 2
+
+extends: Packages/Crontab/Crontab.sublime-syntax
+
+file_extensions:
+  - crontab
+
+contexts:
+
+  cron-expression-done:
+    - include: user-is-next
+
+  user-is-next:
+    - include: pop-eol
+    - match: \broot\b
+      scope: constant.language.crontab
+      set: command-is-next
+    - match: \S+
+      scope: entity.name.user.crontab
+      set: command-is-next

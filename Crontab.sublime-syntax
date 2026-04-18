@@ -4,10 +4,7 @@ name: Crontab
 scope: source.crontab
 version: 2
 
-file_extensions:
-  - tab
-  - crontab
-  - cron.d
+file_extensions: []
 
 contexts:
   main:
@@ -174,7 +171,10 @@ contexts:
     - match: \?|#
       scope: invalid.deprecated.non-standard.crontab
     - match: (?=[ \t])
-      set: command-is-next
+      set: cron-expression-done
+
+  cron-expression-done:
+    - include: command-is-next
 
   command-is-next:
     - include: pop-eol
