@@ -1,6 +1,6 @@
-demo/ export-ignore
-tests/ export-ignore
-README.md export-ignore
-.git* export-ignore
+.github/** export-ignore
+demo/** export-ignore
 
-cron_descriptor/** linguist-vendored
+cron_descriptor/** export-ignore linguist-vendored
+cron_descriptor/LICENSE -export-ignore
+cron_descriptor/cron_descriptor/** -export-ignore
