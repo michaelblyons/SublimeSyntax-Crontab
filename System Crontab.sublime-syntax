@@ -6,8 +6,7 @@ version: 2
 
 extends: Packages/Crontab/Crontab.sublime-syntax
 
-file_extensions:
-  - crontab
+file_extensions: []
 
 contexts:
 

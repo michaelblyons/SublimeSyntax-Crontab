@@ -4,7 +4,8 @@ name: Crontab
 scope: source.crontab
 version: 2
 
-file_extensions: []
+file_extensions:
+  - crontab
 
 contexts:
   main:
