@@ -1,0 +1,24 @@
+[{
+    "id": "preferences",
+    "children": [
+        {
+            "id": "package-settings",
+            "children": [
+                {
+                    "caption": "Crontab",
+                    "children": [
+                        {
+                            "caption": "Settings",
+                            "id": "crontab-settings",
+                            "command": "edit_settings",
+                            "args": {
+                                "base_file": "${packages}/Crontab/Crontab.sublime-settings",
+                                "default": "/* See the left pane for the list of settings and valid values. */\n{\n\t$0\n}\n",
+                            },
+                        },
+                    ]
+                },
+            ]
+        },
+    ]
+}]
