@@ -21,17 +21,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
-      # fail-fast: false
+      fail-fast: false
       matrix:
         include:
           - build: 'latest'
             packages: master
           - build: 'stable'
-            packages: v4193  # revert to 'binary' when Bash rewrite drops in stable
+            packages: binary
           - build: 4086
             packages: v4193  # Bash rewrite
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: SublimeText/syntax-test-action@v2
         with:
           build: ${{ matrix.build }}
