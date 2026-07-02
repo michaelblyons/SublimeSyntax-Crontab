@@ -1,0 +1,17 @@
+name: Package Review
+# https://github.com/kaste/st_package_reviewer/tree/main/gh_action_package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  package-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Review this package repository
+        uses: kaste/st_package_reviewer/gh_action_package@v1
+        with:
+          package-name: Crontab
+          repo: ''  # Disable tag reviews
