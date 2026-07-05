@@ -7,6 +7,8 @@ version: 2
 file_extensions:
   - crontab
 
+first_line_match: ^# Edit this file to introduce tasks to be run by cron
+
 contexts:
   main:
     - include: comments

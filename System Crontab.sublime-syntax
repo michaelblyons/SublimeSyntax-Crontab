@@ -8,6 +8,8 @@ extends: Packages/Crontab/Crontab.sublime-syntax
 
 file_extensions: []
 
+first_line_match: '^# /etc/crontab: system-wide crontab'
+
 contexts:
 
   cron-expression-done:
