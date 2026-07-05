@@ -62,8 +62,8 @@ class HighlightCronRegions(ViewEventListener):
             # Lazy load this package, since it may not be needed.
             # Additionally, in case of issues with it, we still get
             # the rest of the functionality.
-            from .cron_descriptor import cron_descriptor
-            cron_explanation: str = cron_descriptor.get_description(cron_text)
+            from cron_descriptor import get_description
+            cron_explanation: str = get_description(cron_text)
         except ImportError:
             cron_explanation = "Error with cron-descriptor package"
         except Exception:
