@@ -1,4 +1,0 @@
-{
-    "selector": "source.crontab",
-    "cmd": ["crontab", "-T", "$file"],
-}

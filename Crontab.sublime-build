@@ -1,0 +1,15 @@
+{
+    "selector": "source.crontab - source.crontab.anacron",
+    "cmd": ["echo", "No base action is available. Try the 'Lint' build variants."],
+
+    "variants": [
+        {
+            "name": "Lint with `contab -n`",
+            "cmd": ["crontab", "-n", "$file"],
+        },
+        {
+            "name": "Lint with `contab -T` (cronie)",
+            "cmd": ["crontab", "-T", "$file"],
+        },
+    ],
+}
