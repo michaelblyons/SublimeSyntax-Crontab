@@ -1,0 +1,57 @@
+%YAML 1.2
+---
+name: Anacrontab
+scope: source.crontab.anacron
+version: 2
+
+extends: Packages/Crontab/Crontab.sublime-syntax
+
+file_extensions:
+  - anacrontab
+
+contexts:
+  main:
+    - include: comments
+    - include: variables
+    - include: at-syntax
+    - include: every-n-days
+
+  at-syntax:
+    # Every X seconds
+    - match: ^\s*(@)(\d+)(?=[ \t])
+      captures:
+        1: punctuation.definition.variable.crontab
+        2: meta.number.integer.decimal.crontab constant.numeric.value.crontab
+      set: delay-minutes
+    # Keyword, then script embed
+    - match: ^\s*((@){{keywords}})(?=[ \t])
+      captures:
+        1: constant.language.schedule.crontab
+        2: punctuation.definition.variable.crontab
+      set: delay-minutes
+    # Set up autocomplete for keywords
+    - match: ^\s*(@)(\w*(?:[\n\s]|$))
+      captures:
+        1: punctuation.definition.variable.crontab
+        2: meta.completion.at.crontab
+
+  every-n-days:
+    - include: pop-eol
+    - match: \d+
+      scope: meta.number.integer.decimal.anacron constant.numeric.value.anacron
+      set: delay-minutes
+
+  delay-minutes:
+    - include: pop-eol
+    - match: \d+
+      scope: meta.number.integer.decimal.anacron constant.numeric.value.anacron
+      set: job-name
+
+  job-name:
+    - include: pop-eol
+    - match: \S+
+      scope: entity.name.function.anacron
+      set: command-is-next
+
+variables:
+  keywords: '\b(?x: daily | weekly | monthly )\b'
