@@ -4,9 +4,9 @@
 
     // Customize color scopes
     "cron_highlight_colors": {
-        "minute": "region.redish",
+        "minute": "region.purplish",
         "hour": "region.greenish",
-        "day-of-month": "region.orangish",
+        "day-of-month": "region.redish",
         "month": "region.bluish",
         "day-of-week": "region.yellowish",
     },
