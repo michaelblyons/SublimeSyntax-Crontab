@@ -14,7 +14,8 @@
 - Hover on a `cron` expression for an explanation.
 - Comment and uncomment lines
   using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
-- "Build" system to lint if supported on your machine.
+- "Build" system to save as your crontab file
+  or to lint if supported on your machine.
 
 
 ## Installation

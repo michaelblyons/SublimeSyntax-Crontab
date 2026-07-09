@@ -2,16 +2,20 @@
     "selector": "source.crontab - source.crontab.anacron",
     "working_dir": "$file_path",
     "cmd": ["echo", "No base action is available. Try the 'Lint' build variants."],
+    "file_regex": "^\"([^:]+)\":(\\d+):(\\d*) (.*)",
 
     "variants": [
         {
             "name": "Lint with `contab -n`",
             "cmd": ["crontab", "-n", "$file_name"],
-            "file_regex": "^\"([^:]+)\":(\\d+):(\\d*) (.*)",
         },
         {
             "name": "Lint with `contab -T` (cronie)",
             "cmd": ["crontab", "-T", "$file_name"],
+        },
+        {
+            "name": "Save as my crontab",
+            "cmd": ["crontab", "$file_name"],
         },
     ],
 }
