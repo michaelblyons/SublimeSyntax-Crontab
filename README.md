@@ -15,7 +15,7 @@ before saving them to your crontab file.
 - Syntax highlighting for crontab files.
     - Shell syntax highlighting for `cron` commands.
     - Separate syntax highlighter for "system" crontab files.
-- Command Palette entry to load your crontab for editing.
+- Command Palette entry to **Edit my crontab file**.
 - Configurable color-coded underline for `cron` expression parts.
 - Completions for `cron` expressions and enums like month names.
 - Hover on a `cron` expression for an explanation.
@@ -32,19 +32,28 @@ before saving them to your crontab file.
 3. Restart Sublime Text.
 
 
-## Credits &amp; Acknowledgements
+## Lineage &amp; Acknowledgements
 
-1. [clarkewd][]'s original [Crontab Highlighting Package][clarkewd-cron] which was inherited from [kevinior][] and [WheresWardy][].
-2. [Varun Nayyar][nayyarv] and his adaptation of the package to `.sublime-syntax`.
-3. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
+- The current syntax is mostly the fault of [Michael Lyons][michaelblyons],
+  but follows a succession of other handlers:
+    + [Varun Nayyar][nayyarv] adapted the package for Sublime Text 3.
+    + [clarkewd][] had it before that.
+    + And before him, the Sublime Text 2 version was created
+      by [Matthew Ward][whereswardy] and [Kevin O'Rourke][kevinior].
+
+- Build system and colored underlines are by [Michael][michaelblyons].
+
+- The text in hover popups comes from [`cron_descriptor`][pypi]
+  by [Adam Schubert][salamek].
 
 
 [crontab]: https://www.man7.org/linux/man-pages/man5/crontab.5.html
 [st]: https://www.sublimetext.com
 [screenshot]: demo/screenshot.png
 [clarkewd]: https://github.com/clarkewd
-[clarkewd-cron]: https://github.com/clarkewd/SublimeCrontab
 [kevinior]: https://github.com/kevinior
 [whereswardy]: https://github.com/WheresWardy
 [nayyarv]: https://github.com/nayyarv
-[cron_descriptor]: https://github.com/Salamek/cron-descriptor
+[michaelblyons]: https://github.com/michaelblyons
+[salamek]: https://github.com/Salamek
+[pypi]: https://pypi.org/project/cron-descriptor/
