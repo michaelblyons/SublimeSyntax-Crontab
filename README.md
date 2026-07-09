@@ -2,6 +2,7 @@
 
 ![Screenshot of crontab file with syntax highlighting][screenshot]
 
+
 ## Features
 
 - Syntax highlighting for crontab files.
@@ -14,21 +15,20 @@
 - Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
 - "Build" system to lint if supported on your machine.
 
+
 ## Installation
 
 1. Run the “Package Control: Install Package” command.
 2. Find and install the **Crontab** plugin.
 3. Restart Sublime Text.
 
-## Todos
-
-- [ ] Make autocomplete work after `,` and `-`.
 
 ## Credits &amp; Acknowledgements
 
 1. [clarkewd][]'s original [Crontab Highlighting Package][clarkewd-cron] which was inherited from [kevinior][] and [WheresWardy][].
 2. [Varun Nayyar][nayyarv] and his adaptation of the package to `.sublime-syntax`.
 3. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
+
 
 [screenshot]: demo/screenshot.png
 [clarkewd]: https://github.com/clarkewd
