@@ -1,5 +1,12 @@
 # Crontab for Sublime Text
 
+[Crontab][] syntax highlighting and helpers for [Sublime Text][st].
+
+This package leniently highlights 5-term crontab formats.
+Make sure that your system supports features
+like *N*th-weekday-of-month
+before saving them to your crontab file.
+
 ![Screenshot of crontab file with syntax highlighting][screenshot]
 
 
@@ -32,6 +39,8 @@
 3. Adam Schubert and his [`cron_descriptor`][cron_descriptor] package.
 
 
+[crontab]: https://www.man7.org/linux/man-pages/man5/crontab.5.html
+[st]: https://www.sublimetext.com
 [screenshot]: demo/screenshot.png
 [clarkewd]: https://github.com/clarkewd
 [clarkewd-cron]: https://github.com/clarkewd/SublimeCrontab
