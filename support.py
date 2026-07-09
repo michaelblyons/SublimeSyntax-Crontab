@@ -33,7 +33,7 @@ class HighlightCronRegions(ViewEventListener):
 
     def highlight_cron(self):
         settings = sublime.load_settings(self.SETTINGS_FILE)
-        color_map: dict[str, str] = settings.get('cron_highlight_colors')
+        color_map: dict[str, str] = settings.get('cron_highlight_colors')  # pyright: ignore[reportAssignmentType]
         for cron_part, scope in color_map.items():
             self.highlight_cron_part(cron_part, scope)
 
