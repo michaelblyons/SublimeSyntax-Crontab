@@ -12,7 +12,8 @@
 - Configurable color-coded underline for `cron` expression parts.
 - Completions for `cron` expressions and enums like month names.
 - Hover on a `cron` expression for an explanation.
-- Comment and uncommenting lines using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
+- Comment and uncomment lines
+  using <kbd>Ctrl</kbd>+<kbd>/</kbd> or <kbd>Cmd</kbd>+<kbd>/</kbd>.
 - "Build" system to lint if supported on your machine.
 
 
