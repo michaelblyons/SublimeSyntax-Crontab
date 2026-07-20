@@ -1,10 +1,10 @@
-# Crontab for Sublime Text
+# [Crontab][] for [Sublime Text][st]
 
-[Crontab][] syntax highlighting and helpers for [Sublime Text][st].
+This package leniently highlights 5-term crontab formats
+and adds helpers for loading, saving, and a human-readable version.
 
-This package leniently highlights 5-term crontab formats.
 Make sure that your system supports features
-like *N*th-weekday-of-month
+like `L`, `W`, or `#`
 before saving them to your crontab file.
 
 ![Screenshot of crontab file with syntax highlighting][screenshot]
@@ -37,8 +37,8 @@ before saving them to your crontab file.
 - The current syntax is mostly the fault of [Michael Lyons][michaelblyons],
   but follows a succession of other handlers:
     + [Varun Nayyar][nayyarv] adapted the package for Sublime Text 3.
-    + [clarkewd][] had it before that.
-    + And before him, the Sublime Text 2 version was created
+    + [clarkewd][] had it before him.
+    + And before that, the Sublime Text 2 version was created
       by [Matthew Ward][whereswardy] and [Kevin O'Rourke][kevinior].
 
 - Build system and colored underlines are by [Michael][michaelblyons].
